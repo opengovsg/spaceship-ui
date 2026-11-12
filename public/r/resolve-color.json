@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resolve-color",
+  "title": "resolve-color",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/lib/resolve-color.ts",
+      "content": "let _theme = \"\";\nconst _cache = new Map<string, string>();\n\n/** Resolves a CSS custom property to an actual computed rgb() value via a temp element.\n *  getComputedStyle on :root returns raw var() references, not resolved colors.\n *  Using el.style.color forces the browser to walk the full chain. */\nexport function resolveColor(token: string): string {\n  if (token === \"transparent\") return \"rgba(0,0,0,0)\";\n\n  const theme = document.documentElement.getAttribute(\"data-theme\") ?? \"light\";\n  if (theme !== _theme) {\n    _theme = theme;\n    _cache.clear();\n  }\n\n  const cached = _cache.get(token);\n  if (cached) return cached;\n\n  const el = document.createElement(\"span\");\n  el.style.color = `var(${token}, transparent)`;\n  document.body.appendChild(el);\n  const resolved = getComputedStyle(el).color;\n  el.remove();\n\n  _cache.set(token, resolved);\n  return resolved;\n}\n\n/** Converts 'rgb(R, G, B)' → 'rgba(R, G, B, 0)'. Preserves RGB channels for transparent start,\n *  so Motion only interpolates alpha — no dark intermediate states. */\nexport function toAlphaZero(rgb: string): string {\n  if (rgb.startsWith(\"rgba(\")) return rgb.replace(/,\\s*[\\d.]+\\)$/, \", 0)\");\n  return rgb.replace(\"rgb(\", \"rgba(\").replace(\")\", \", 0)\");\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/lib/resolve-color.ts"
+    }
+  ],
+  "type": "registry:lib"
+}

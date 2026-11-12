@@ -1,0 +1,16 @@
+.spaceship-wordmark {
+  color: var(--text-primary);
+}
+
+/* Explicit treatments keep the word and artwork paired in either app theme. */
+.spaceship-wordmark[data-treatment="silver"] {
+  color: var(--text-inverse);
+}
+
+html[data-theme="dark"] .spaceship-wordmark[data-treatment="silver"] {
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] .spaceship-wordmark[data-treatment="graphite"] {
+  color: var(--text-inverse);
+}

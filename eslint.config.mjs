@@ -12,6 +12,12 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Component files are byte-for-byte copies of spaceship-frontend's
+    // src/components/ds and follow that repo's oxlint rules. Lint them there.
+    "registry/ui/**",
+    "registry/patterns/**",
+    "registry/lib/**",
+    "public/r/**",
   ]),
 ]);
 

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notice",
+  "title": "notice",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/callout.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/notice.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Callout } from \"./Callout\";\n\nexport const noticeVariants = cva([], {\n  variants: {\n    tone: { error: \"\", warning: \"\", info: \"\", success: \"\", neutral: \"\" },\n    surface: { default: \"\", \"shadow-border\": \"\" },\n  },\n  defaultVariants: { tone: \"error\", surface: \"default\" },\n});\n\nexport interface NoticeProps\n  extends\n    Omit<React.HTMLAttributes<HTMLDivElement>, \"children\">,\n    VariantProps<typeof noticeVariants> {\n  children?: ReactNode;\n  description?: ReactNode;\n  leadingIcon?: ReactNode | null;\n}\n\nexport function Notice({\n  tone = \"error\",\n  surface,\n  leadingIcon,\n  children,\n  description,\n  role = \"status\",\n  ...props\n}: NoticeProps) {\n  return (\n    <Callout\n      {...props}\n      role={role}\n      color={tone ?? \"error\"}\n      surface={surface}\n      leadingIcon={leadingIcon}\n      title={children}\n    >\n      {description}\n    </Callout>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/notice.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

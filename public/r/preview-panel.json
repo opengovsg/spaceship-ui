@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-panel",
+  "title": "PreviewPanel",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/preview-panel-header.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/PreviewPanel.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode } from \"react\";\nimport { PreviewPanelHeader } from \"./PreviewPanelHeader\";\n\ninterface PreviewPanelProps {\n  title?: string;\n  onRefresh?: () => void;\n  onOpenInNewTab?: () => void;\n  children?: ReactNode;\n}\n\nexport function PreviewPanel({\n  title = \"Preview\",\n  onRefresh,\n  onOpenInNewTab,\n  children,\n}: PreviewPanelProps) {\n  return (\n    <div className=\"flex flex-col overflow-clip rounded-xl shadow-(--shadow-border) bg-(--bg-surface-base) size-full\">\n      <PreviewPanelHeader\n        title={title}\n        onRefresh={onRefresh}\n        onOpenInNewTab={onOpenInNewTab}\n      />\n      <div className=\"flex flex-1 min-h-0 bg-(--bg-prototype-canvas) overflow-clip\">\n        {children}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/PreviewPanel.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

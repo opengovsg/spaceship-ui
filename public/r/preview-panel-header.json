@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-panel-header",
+  "title": "PreviewPanelHeader",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/PreviewPanelHeader.tsx",
+      "content": "\"use client\";\n\nimport { RefreshCw, ExternalLink } from \"lucide-react\";\nimport { Button } from \"../ui\";\n\ninterface PreviewPanelHeaderProps {\n  title?: string;\n  onRefresh?: () => void;\n  onOpenInNewTab?: () => void;\n}\n\nexport function PreviewPanelHeader({\n  title = \"Preview\",\n  onRefresh,\n  onOpenInNewTab,\n}: PreviewPanelHeaderProps) {\n  return (\n    <div className=\"bg-(--bg-artifact-header) border-b-2 border-(--bg-surface-secondary) flex shrink-0 items-center justify-between px-4 py-4\">\n      <p className=\"font-sans text-title font-semibold text-(--text-primary) whitespace-nowrap\">\n        {title}\n      </p>\n      <div className=\"flex items-center gap-3\">\n        <Button\n          variant=\"secondary\"\n          trailingIcon={<RefreshCw />}\n          onClick={onRefresh}\n        >\n          Refresh\n        </Button>\n        <Button\n          variant=\"secondary\"\n          trailingIcon={<ExternalLink />}\n          onClick={onOpenInNewTab}\n        >\n          Open in new tab\n        </Button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/PreviewPanelHeader.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

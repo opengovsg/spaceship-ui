@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-button",
+  "title": "IconButton",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/button.json",
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/IconButton.tsx",
+      "content": "import { forwardRef, type ReactNode } from \"react\";\nimport { Button, IconSlot, type ButtonProps } from \"./button\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nexport interface IconButtonProps extends Omit<\n  ButtonProps,\n  \"variant\" | \"size\" | \"color\" | \"icon\" | \"children\"\n> {\n  /** @deprecated Icon buttons always render a ghost surface. */\n  variant?: \"solid\" | \"outline\";\n  color?: \"primary\" | \"secondary\" | \"critical\";\n  /** @deprecated All IconButtons use the same 36px square and 16px icon. */\n  size?: \"xs\" | \"sm\" | \"md\";\n  icon: ReactNode;\n  \"aria-label\": string;\n  /** @deprecated Icon buttons have no shadow. */\n  dropShadow?: boolean;\n  showIndicator?: boolean;\n}\n\n/** Icon-only button using the same interaction and colour implementation as Button. */\nexport const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(\n  function IconButton(\n    {\n      variant: _variant,\n      color = \"primary\",\n      icon,\n      dropShadow: _dropShadow,\n      iconSize = 16,\n      showIndicator,\n      className,\n      ...props\n    },\n    ref,\n  ) {\n    // Consume legacy presentation props without passing them to the DOM.\n    void _variant;\n    void _dropShadow;\n    const buttonSize = \"icon\";\n\n    return (\n      <Button\n        {...props}\n        ref={ref}\n        type={props.type ?? \"button\"}\n        variant={color === \"critical\" ? \"destructive\" : color}\n        size={buttonSize}\n        surface=\"ghost\"\n        iconSize={iconSize}\n        className={cn(\"relative\", className)}\n      >\n        <IconSlot icon={icon} sizeKey={buttonSize} iconSize={iconSize} />\n        {showIndicator && (\n          <span\n            aria-hidden\n            className=\"absolute -bottom-1 -right-1 size-3 rounded-full bg-(--bg-status-error) shadow-(--shadow-border)\"\n          />\n        )}\n      </Button>\n    );\n  },\n);\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/IconButton.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

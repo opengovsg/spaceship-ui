@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-textarea-width",
+  "title": "use-textarea-width",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ui/use-textarea-width.ts",
+      "content": "import { type RefObject, useLayoutEffect, useReducer } from \"react\";\n\n/** Remeasure autosized text when a split pane changes width without a window resize. */\nexport function useTextareaWidth(\n  ref: RefObject<HTMLElement | null>,\n  fieldKey?: string | number,\n) {\n  const [, remeasure] = useReducer((revision: number) => revision + 1, 0);\n  useLayoutEffect(() => {\n    const field = ref.current;\n    if (!field || typeof ResizeObserver === \"undefined\") return;\n    let width = field.getBoundingClientRect().width;\n    const observer = new ResizeObserver(() => {\n      const next = field.getBoundingClientRect().width;\n      if (next === width) return;\n      width = next;\n      remeasure();\n    });\n    observer.observe(field);\n    return () => observer.disconnect();\n  }, [ref, fieldKey]);\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/use-textarea-width.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

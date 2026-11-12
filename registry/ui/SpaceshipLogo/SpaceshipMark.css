@@ -1,0 +1,23 @@
+/* App artwork follows the explicit theme, independently of the browser/OS.
+ * Per-mark treatments take precedence over the application's theme. */
+.spaceship-mark > .spaceship-mark-graphite {
+  display: block;
+}
+
+.spaceship-mark > .spaceship-mark-silver {
+  display: none;
+}
+
+html[data-theme="dark"]
+  .spaceship-mark:not([data-treatment])
+  > .spaceship-mark-graphite,
+.spaceship-mark[data-treatment="silver"] > .spaceship-mark-graphite {
+  display: none;
+}
+
+html[data-theme="dark"]
+  .spaceship-mark:not([data-treatment])
+  > .spaceship-mark-silver,
+.spaceship-mark[data-treatment="silver"] > .spaceship-mark-silver {
+  display: block;
+}

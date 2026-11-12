@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "artifact-content-renderer",
+  "title": "ArtifactContentRenderer",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/artifact-types.json",
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/ArtifactContentRenderer.tsx",
+      "content": "\"use client\";\n\nimport { MarkdownProse } from \"#/components/ds/ui\";\nimport { Eye, Smartphone } from \"lucide-react\";\nimport { type Artifact } from \"./artifact-types\";\n\ninterface ArtifactContentRendererProps {\n  artifact: Artifact;\n}\n\nexport function ArtifactContentRenderer({\n  artifact,\n}: ArtifactContentRendererProps) {\n  if (artifact.type === \"preview\") {\n    return (\n      <div className=\"flex flex-1 flex-col items-center justify-center gap-4 p-8 bg-(--bg-surface-secondary)\">\n        <div className=\"flex items-center justify-center size-16 rounded-2xl bg-(--bg-surface-tertiary) shadow-(--shadow-border)\">\n          <Eye className=\"size-8 text-(--text-tertiary)\" />\n        </div>\n        <div className=\"text-center\">\n          <p className=\"font-sans text-body [font-weight:var(--font-weight-bold)] text-(--text-secondary)\">\n            Live Preview\n          </p>\n          <p className=\"font-sans text-body text-(--text-tertiary) mt-1\">\n            Preview will appear here once code is generated\n          </p>\n        </div>\n      </div>\n    );\n  }\n\n  if (artifact.type === \"prototype\") {\n    return (\n      <div className=\"flex flex-1 flex-col items-center justify-center gap-4 p-8 bg-(--bg-surface-secondary)\">\n        <div className=\"flex items-center justify-center size-16 rounded-2xl bg-(--bg-surface-tertiary) shadow-(--shadow-border)\">\n          <Smartphone className=\"size-8 text-(--text-tertiary)\" />\n        </div>\n        <div className=\"text-center\">\n          <p className=\"font-sans text-body [font-weight:var(--font-weight-bold)] text-(--text-secondary)\">\n            Prototype Ready\n          </p>\n          <p className=\"font-sans text-body text-(--text-tertiary) mt-1\">\n            Share this link with your test participants to begin user testing\n          </p>\n        </div>\n      </div>\n    );\n  }\n\n  if (artifact.type === \"code\") {\n    return (\n      <div className=\"min-h-full w-full bg-(--bg-surface-secondary) p-4\">\n        <pre className=\"font-mono text-caption text-(--text-primary) whitespace-pre overflow-x-auto w-full\">\n          <code>{artifact.content}</code>\n        </pre>\n      </div>\n    );\n  }\n\n  return (\n    <div className=\"min-h-full w-full bg-(--bg-surface-base) p-2\">\n      <MarkdownProse>{artifact.content}</MarkdownProse>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/ArtifactContentRenderer.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

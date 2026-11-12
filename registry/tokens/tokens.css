@@ -1,0 +1,532 @@
+/* ============================================================
+   SPACESHIP DESIGN SYSTEM — TOKEN FOUNDATION
+   ------------------------------------------------------------
+   SYNCED FROM the Figma design-system file ("Spaceship v3 Design
+   System"), via its variables/styles JSON export.
+
+   This repo is the source of truth for the *code* consumers of
+   these tokens (the app, Storybook). To change a value, re-export
+   the Figma variables and update this file — do not hand-edit
+   values without a corresponding Figma change, or the two will
+   drift silently.
+
+   The frontend's utility tokens in src/components/ds/tokens/theme.css re-point at
+   the custom properties defined here, so the app's palette,
+   shadows, type scale, motion and dark mode all derive from the
+   design system with zero component markup changes.
+
+   Last synced: 2026-08-11 (all 6 primitive ramps re-muted for a
+   "spacecraft grey" character — OKLCH ratio-of-max-chroma technique,
+   calibrated against Apple's system colours; every ramp gained -25 and
+   -950 steps, all other steps revalued). Prior sync: 2026-07-28 (full
+   rebrand — every primitive ramp revalued, neutral scale renamed Zinc →
+   Space White, primary/mono typefaces changed). See
+   src/stories/foundations/ColorRampProposal.mdx for the reasoning and
+   src/stories/foundations/tokens.ts / Foundations MDX pages for the
+   human-readable diff.
+
+   The Semantic block below was synced separately, same date: Figma's
+   "Colour Semantics" collection (Light mode) picked up subtle surface
+   roles, a status "default" tier, unified border/disabled steps, a
+   secondary-ghost family, and several redefined text-* mappings. Dark
+   mode was deliberately NOT synced — see the [data-theme="dark"] block's
+   own header for why (Figma's Dark mode there is incompletely authored).
+   ============================================================ */
+
+:root {
+
+  /* ── Primitives — Brand Scales ───────────────────────────────
+     Raw palette values. Never reference these in components.
+     Use semantic tokens instead.
+     ──────────────────────────────────────────────────────────── */
+
+  /* Orbit Blue */
+  --orbit-blue-25: #fbfcfc;
+  --orbit-blue-50: #f8fafd;
+  --orbit-blue-100: #f1f5fc;
+  --orbit-blue-200: #dfe8f8;
+  --orbit-blue-300: #c4d5f2;
+  --orbit-blue-400: #7a9fe3;
+  --orbit-blue-500: #366cd6;
+  --orbit-blue-600: #244fa3;
+  --orbit-blue-700: #193c7f;
+  --orbit-blue-800: #0d2555;
+  --orbit-blue-900: #051637;
+  --orbit-blue-950: #010619;
+
+  /* Cosmic Lilac */
+  --cosmic-lilac-25: #fcfcfc;
+  --cosmic-lilac-50: #f9f9fd;
+  --cosmic-lilac-100: #f4f4fb;
+  --cosmic-lilac-200: #e6e6f6;
+  --cosmic-lilac-300: #d2d0ee;
+  --cosmic-lilac-400: #9c96da;
+  --cosmic-lilac-500: #705fc8;
+  --cosmic-lilac-600: #533fa3;
+  --cosmic-lilac-700: #3f2f7f;
+  --cosmic-lilac-800: #281d55;
+  --cosmic-lilac-900: #171036;
+  --cosmic-lilac-950: #070418;
+
+  /* Lumen Yellow */
+  --lumen-yellow-25: #fcfcfa;
+  --lumen-yellow-50: #fdfaf1;
+  --lumen-yellow-100: #fbf4e2;
+  --lumen-yellow-200: #f6e7bf;
+  --lumen-yellow-300: #eed184;
+  --lumen-yellow-400: #b49e5f;
+  --lumen-yellow-500: #827143;
+  --lumen-yellow-600: #60532f;
+  --lumen-yellow-700: #4a3f23;
+  --lumen-yellow-800: #2f2814;
+  --lumen-yellow-900: #1c1709;
+  --lumen-yellow-950: #090702;
+
+  /* Nova Mint */
+  --nova-mint-25: #fafcfb;
+  --nova-mint-50: #f2fdf8;
+  --nova-mint-100: #e4fbf1;
+  --nova-mint-200: #bff6df;
+  --nova-mint-300: #8aebc6;
+  --nova-mint-400: #67b195;
+  --nova-mint-500: #49806b;
+  --nova-mint-600: #345e4e;
+  --nova-mint-700: #27483b;
+  --nova-mint-800: #172e25;
+  --nova-mint-900: #0b1c15;
+  --nova-mint-950: #030906;
+
+  /* Solar Coral */
+  --solar-coral-25: #fcfbfb;
+  --solar-coral-50: #fdf9f8;
+  --solar-coral-100: #fbf2f1;
+  --solar-coral-200: #f6e3df;
+  --solar-coral-300: #efcac4;
+  --solar-coral-400: #dd8475;
+  --solar-coral-500: #b35041;
+  --solar-coral-600: #85392e;
+  --solar-coral-700: #672b22;
+  --solar-coral-800: #441a13;
+  --solar-coral-900: #2b0d09;
+  --solar-coral-950: #120302;
+
+  /* ── Primitives — Neutral Scale (Space White) ────────────────
+     Figma renamed this scale "Space White" (was Zinc) and gave it
+     new, cooler-toned values. Basis for secondary-* and neutral
+     surfaces.
+     ──────────────────────────────────────────────────────────── */
+  --space-white-25: #fbfcfc;
+  --space-white-50: #f9fafb;
+  --space-white-100: #f2f5f8;
+  --space-white-200: #e5e8ec;
+  --space-white-300: #d0d4da;
+  --space-white-400: #9ba0a6;
+  --space-white-500: #6f737a;
+  --space-white-600: #51545a;
+  --space-white-700: #3d4145;
+  --space-white-800: #26292d;
+  --space-white-900: #15181b;
+  --space-white-950: #060709;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Deprecated alias — "Neutral (Zinc)" was the old name for this
+     scale. Kept so existing --neutral-* / --secondary-* references
+     don't break; new code should reference --space-white-* directly. */
+  --neutral-50: var(--space-white-50);
+  --neutral-100: var(--space-white-100);
+  --neutral-200: var(--space-white-200);
+  --neutral-300: var(--space-white-300);
+  --neutral-400: var(--space-white-400);
+  --neutral-500: var(--space-white-500);
+  --neutral-600: var(--space-white-600);
+  --neutral-700: var(--space-white-700);
+  --neutral-800: var(--space-white-800);
+  --neutral-900: var(--space-white-900);
+  --neutral-950: var(--space-white-950);
+
+  /* ── Aliases — Colour Scheme ────────────────────────────────
+     primary-* → Orbit Blue, secondary-* → Space White
+     ──────────────────────────────────────────────────────────── */
+  --primary-50: var(--orbit-blue-50);
+  --primary-100: var(--orbit-blue-100);
+  --primary-200: var(--orbit-blue-200);
+  --primary-300: var(--orbit-blue-300);
+  --primary-400: var(--orbit-blue-400);
+  --primary-500: var(--orbit-blue-500);
+  --primary-600: var(--orbit-blue-600);
+  --primary-700: var(--orbit-blue-700);
+  --primary-800: var(--orbit-blue-800);
+  --primary-900: var(--orbit-blue-900);
+  --primary-25: var(--orbit-blue-25);
+  --secondary-25: var(--space-white-25);
+  --secondary-50: var(--space-white-50);
+  --secondary-100: var(--space-white-100);
+  --secondary-200: var(--space-white-200);
+  --secondary-300: var(--space-white-300);
+  --secondary-400: var(--space-white-400);
+  --secondary-500: var(--space-white-500);
+  --secondary-600: var(--space-white-600);
+  --secondary-700: var(--space-white-700);
+  --secondary-800: var(--space-white-800);
+  --secondary-900: var(--space-white-900);
+
+  /* ── Semantic — Project Colours ──────────────────────────────
+     These are what components use. Map from Figma Colour Semantics
+     (Light mode). Last synced 2026-08-11 — Kevin restructured this
+     collection: a "subtle" tier on interactive primary/error/success/
+     warning and a new secondary-ghost family, a "default" tier on
+     status backgrounds (alongside the existing flat tokens, which are
+     the "subtle" tier), brand/surface "subtle" roles, and several
+     redefined text-* / border-* / disabled mappings. See ColorRampProposal
+     .mdx's sibling note in the primitives block above for the palette
+     side of this sync; this is the semantic side.
+     ──────────────────────────────────────────────────────────── */
+  --text-primary: var(--space-white-950);
+  --text-secondary: var(--secondary-600);
+  --text-tertiary: var(--secondary-500);
+  --text-placeholder: var(--secondary-400);
+  --text-inverse: var(--white);
+  --text-interactive-primary: var(--primary-500);
+  --text-interactive-secondary: var(--space-white-800);
+  --text-interactive-disabled: var(--secondary-400);
+  --text-interactive-error: var(--solar-coral-500);
+  --text-interactive-success: var(--nova-mint-500);
+  --text-status-success: var(--nova-mint-500);
+  --text-status-warning: var(--lumen-yellow-500);
+  --text-status-error: var(--solar-coral-500);
+  --text-status-info: var(--orbit-blue-500);
+  --text-status-info-secondary: var(--secondary-600);
+  --overlay-light: rgba(0, 0, 0, 0.1);
+  --overlay-medium: rgba(0, 0, 0, 0.3);
+  --overlay-heavy: rgba(0, 0, 0, 0.5);
+  --border-default: var(--secondary-300);
+  --border-subtle: var(--secondary-200);
+  --border-brand-default: var(--primary-300);
+  --border-brand-subtle: var(--primary-200);
+  --border-success: var(--nova-mint-400);
+  --border-error: var(--solar-coral-400);
+  --border-warning: var(--lumen-yellow-400);
+  --border-info: var(--orbit-blue-400);
+  /* bg-status-* below is the "subtle" tier (unchanged target steps);
+     bg-status-default-* is a new, stronger tier introduced alongside it. */
+  --bg-status-success: var(--nova-mint-100);
+  --bg-status-warning: var(--lumen-yellow-100);
+  --bg-status-error: var(--solar-coral-100);
+  --bg-status-info: var(--orbit-blue-100);
+  --bg-status-neutral: var(--secondary-100);
+  --bg-status-default-success: var(--nova-mint-400);
+  --bg-status-default-warning: var(--lumen-yellow-400);
+  --bg-status-default-error: var(--solar-coral-400);
+  --bg-status-default-info: var(--orbit-blue-400);
+  --bg-status-default-neutral: var(--secondary-400);
+  --bg-surface-primary: var(--secondary-50);
+  --bg-surface-secondary: var(--secondary-100);
+  --bg-surface-tertiary: var(--secondary-200);
+  --bg-surface-subtle: var(--secondary-25);
+  --bg-surface-base: var(--white);
+  --bg-surface-paper: #ffffff;
+  --bg-surface-fade: #fcfcfc;
+  --bg-interactive-primary-default: var(--primary-500);
+  --bg-interactive-primary-hover: var(--primary-600);
+  --bg-interactive-primary-pressed: var(--primary-700);
+  --bg-interactive-primary-disabled: var(--space-white-100);
+  --bg-interactive-primary-subtle-default: var(--primary-50);
+  --bg-interactive-primary-subtle-hover: var(--primary-100);
+  --bg-interactive-primary-subtle-pressed: var(--primary-200);
+  --bg-interactive-primary-subtle-disabled: var(--secondary-50);
+  --border-input-default: var(--secondary-300);
+  --border-input-focus: var(--orbit-blue-500);
+  --bg-input-default: var(--secondary-50);
+  --bg-interactive-secondary-default: var(--secondary-50);
+  --bg-interactive-secondary-hover: var(--secondary-100);
+  --bg-interactive-secondary-pressed: var(--secondary-200);
+  --bg-interactive-secondary-disabled: var(--secondary-50);
+  --bg-interactive-secondary-ghost-default: var(--secondary-100);
+  --bg-interactive-secondary-ghost-hover: var(--secondary-200);
+  --bg-interactive-secondary-ghost-pressed: var(--secondary-300);
+  --bg-interactive-secondary-ghost-disabled: var(--space-white-100);
+  --bg-interactive-success-default: var(--nova-mint-500);
+  --bg-interactive-success-hover: var(--nova-mint-600);
+  --bg-interactive-success-pressed: var(--nova-mint-700);
+  --bg-interactive-success-disabled: var(--space-white-100);
+  --bg-interactive-success-subtle-default: var(--nova-mint-50);
+  --bg-interactive-success-subtle-hover: var(--nova-mint-100);
+  --bg-interactive-success-subtle-pressed: var(--nova-mint-200);
+  --bg-interactive-success-subtle-disabled: var(--secondary-50);
+  --bg-interactive-error-default: var(--solar-coral-500);
+  --bg-interactive-error-hover: var(--solar-coral-600);
+  --bg-interactive-error-pressed: var(--solar-coral-700);
+  --bg-interactive-error-disabled: var(--space-white-100);
+  --bg-interactive-error-subtle-default: var(--solar-coral-50);
+  --bg-interactive-error-subtle-hover: var(--solar-coral-100);
+  --bg-interactive-error-subtle-pressed: var(--solar-coral-200);
+  --bg-interactive-error-subtle-disabled: var(--secondary-50);
+  --bg-interactive-warning-subtle-default: var(--lumen-yellow-50);
+  --bg-interactive-warning-subtle-hover: var(--lumen-yellow-100);
+  --bg-interactive-warning-subtle-pressed: var(--lumen-yellow-200);
+  /* Figma has this at Space White/100, not /50 like the sibling
+     primary/error/success -subtle-disabled roles above — an
+     inconsistency in the source file, applied as-is. */
+  --bg-interactive-warning-subtle-disabled: var(--secondary-100);
+  --bg-surface-brand-primary: var(--primary-50);
+  --bg-surface-brand-secondary: var(--primary-100);
+  --bg-surface-brand-tertiary: var(--primary-200);
+  --bg-surface-brand-subtle: var(--primary-25);
+  --bg-surface-brand-base: var(--primary-300); /* Figma no longer defines this explicitly; kept as-is */
+
+  /* Not in the current Figma "Colour Semantics" collection — these
+     four-step tinted-surface families for success/error/warning are
+     a repo-owned pattern (still used, see tokens.ts COLOR_GROUPS).
+     Re-seeded from the new primitives; treat as manually maintained
+     until Figma models them. */
+  --bg-surface-success-primary: var(--nova-mint-50);
+  --bg-surface-success-secondary: var(--nova-mint-100);
+  --bg-surface-success-tertiary: var(--nova-mint-200);
+  --bg-surface-success-base: var(--nova-mint-300);
+  --bg-surface-error-primary: var(--solar-coral-50);
+  --bg-surface-error-secondary: var(--solar-coral-100);
+  --bg-surface-error-tertiary: var(--solar-coral-200);
+  --bg-surface-error-base: var(--solar-coral-300);
+  --bg-surface-warning-primary: var(--lumen-yellow-50);
+  --bg-surface-warning-secondary: var(--lumen-yellow-100);
+  --bg-surface-warning-tertiary: var(--lumen-yellow-200);
+  --bg-surface-warning-base: var(--lumen-yellow-300);
+
+  --bg-interactive-warning-default: var(--lumen-yellow-400);
+  --bg-interactive-warning-hover: var(--lumen-yellow-500);
+  --bg-interactive-warning-pressed: var(--lumen-yellow-600);
+  --bg-interactive-warning-disabled: var(--secondary-100);
+
+  /* ── Typography ──────────────────────────────────────────────*/
+  /* Font Sizes */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
+  --font-size-7xl: 4.5rem; /* 72px */
+  --font-size-8xl: 6rem; /* 96px */
+  --font-size-9xl: 8rem; /* 128px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-xs: 0.75rem; /* 12px */
+  /* --font-size-2xs (11px) has no Figma counterpart (its type scale
+     starts at xs/12px) — kept as a repo-owned extra, still consumed
+     by src/components/ds/ui/keycap.tsx. */
+  --font-size-2xs: 0.6875rem; /* 11px */
+
+  /* Line Heights */
+  --line-height-2xl: 2rem; /* 32px */
+  --line-height-3xl: 2.25rem; /* 36px */
+  --line-height-4xl: 2.5rem; /* 40px */
+  /* Figma's line-height/5xl..9xl are all "auto" (100%); this repo
+     keeps explicit px values for 5xl/6xl instead, since the new
+     displays/display-1 and display-2 composite styles need them
+     (60/100 and 48/72 respectively) — see FONT_SIZES/TYPE_STYLES in
+     src/stories/foundations/tokens.ts. */
+  --line-height-5xl: 4.5rem; /* 72px */
+  --line-height-6xl: 6.25rem; /* 100px */
+  --line-height-7xl: 1; /* auto / 100% */
+  --line-height-8xl: 1; /* auto / 100% */
+  --line-height-9xl: 1; /* auto / 100% */
+  --line-height-base: 1.5rem; /* 24px */
+  --line-height-lg: 1.75rem; /* 28px */
+  --line-height-sm: 1.25rem; /* 20px */
+  --line-height-xl: 1.75rem; /* 28px */
+  --line-height-xs: 1rem; /* 16px */
+  --line-height-2xs: 0.875rem; /* 14px */
+
+  /* Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-regular: 400;
+  /* --font-weight-medium (500) has no counterpart in Figma's current
+     Typography collection (only thin/regular/semibold/bold are
+     defined there) — kept as a repo-owned extra, still consumed by
+     src/components/ds/ui/keycap.tsx. */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+
+  /* ── Border Radius ───────────────────────────────────────────
+     Introduced from Figma's Dimensions collection — the repo had no
+     radius tokens before this sync (Tailwind defaults + hero.ts's
+     own layout.radius were the only prior sources).
+     ──────────────────────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadow-Border ───────────────────────────────────────────
+     Not in Figma variables — maintained manually.
+     ──────────────────────────────────────────────────────────── */
+  --shadow-border:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+  --shadow-border-hover:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.08),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.08),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0px 0px 0px 1px rgba(0, 0, 0, 0.06);
+
+  /* ── Keycap Shadows ──────────────────────────────────────────
+     3-layer Jakub system: outline ring + inner softness + flat depth.
+     Not in Figma variables — maintained manually.
+     ──────────────────────────────────────────────────────────── */
+  --shadow-keycap:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0px 3px 0px 0px rgba(0, 0, 0, 0.10);
+  --shadow-keycap-hover:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.08),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.08),
+    0px 3px 0px 0px rgba(0, 0, 0, 0.14);
+  --shadow-keycap-pressed:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0px 0px 0px 0px rgba(0, 0, 0, 0.00);
+
+  /* ── Effects ─────────────────────────────────────────────────
+     Not in Figma variables — maintained manually.
+     ──────────────────────────────────────────────────────────── */
+  --effect-gravity-bg:   #fafaf8;
+  --effect-gravity-dot:  color-mix(in srgb, var(--secondary-400) 32%, transparent);
+  --effect-gravity-grid: color-mix(in srgb, var(--secondary-400) 13%, transparent);
+
+  --effect-thinking-dot:  color-mix(in srgb, var(--secondary-400) 50%, transparent);
+  --effect-thinking-line: color-mix(in srgb, var(--secondary-400) 48%, transparent);
+
+  --effect-thinking-1: var(--solar-coral-500);
+  --effect-thinking-2: var(--lumen-yellow-500);
+  --effect-thinking-3: var(--nova-mint-500);
+  --effect-thinking-4: var(--orbit-blue-500);
+  --effect-thinking-5: var(--cosmic-lilac-500);
+
+  --effect-thinking-ship-belly:   var(--solar-coral-500);
+  --effect-thinking-ship-body:    var(--orbit-blue-500);
+  --effect-thinking-ship-dome:    var(--lumen-yellow-500);
+  --effect-thinking-asteroid:     var(--secondary-400);
+
+  --effect-shimmer-highlight: var(--white);
+
+  /* ── Motion ──────────────────────────────────────────────────
+     Not in Figma variables — maintained manually.
+     ──────────────────────────────────────────────────────────── */
+  --duration-instant:  50ms;
+  --duration-fast:     100ms;
+  --duration-base:     200ms;
+  --duration-slow:     300ms;
+  --duration-slower:   500ms;
+
+  --ease-linear:   linear;
+  --ease-in:       cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Sizing ─────────────────────────────────────────────────
+     Not in Figma variables — maintained manually.
+     Width constraints for chat-related components.
+     ──────────────────────────────────────────────────────────── */
+  --sizing-chat-min:     20rem;    /* 320px */
+  --sizing-chat-default: 26.75rem; /* 428px */
+  --sizing-chat-panel:   35rem;    /* 560px — chat column width when artifact panel is visible */
+  --sizing-chat-max:     96rem;    
+}
+
+/* ── Dark Mode ────────────────────────────────────────────────────
+   Override semantic tokens only. Primitives never change.
+   Derived by inverting scale direction on the neutral/primary axes.
+
+   Figma's Colour Semantics collection does define a Dark mode, but
+   it is incompletely authored today — most text/* and border/*
+   tokens are identical between its Light and Dark values (e.g.
+   text/primary is Space White/950 in both modes, which would be
+   near-invisible on a dark surface), and its Black primitive itself
+   flips to white in Dark mode, which would make bg/surface/base
+   resolve to white in dark theme. None of that is portable as-is.
+
+   So this block keeps its own hand-authored inversion logic (which
+   actually works — light text on dark surfaces) and only reseeds
+   its primitive references with the new brand values from the
+   2026-07-28 sync. Re-derive this from Figma once its Dark mode is
+   fully authored there.
+   ─────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  /* Text */
+  --text-primary:   var(--secondary-50);
+  --text-secondary: var(--secondary-400);
+  --text-tertiary:  var(--secondary-500);
+  --text-placeholder: var(--secondary-600);
+  --text-inverse:   var(--black);
+  --text-interactive-primary:   var(--primary-300);
+  --text-interactive-secondary: var(--white);
+  --text-interactive-disabled:  var(--secondary-600);
+
+  /* Backgrounds */
+  --bg-surface-base:      var(--space-white-950);
+  --bg-surface-paper:     var(--space-white-900);
+  --bg-surface-fade:      var(--space-white-900);
+  --bg-surface-primary:   var(--space-white-900);
+  --bg-surface-secondary: var(--space-white-800);
+  --bg-surface-tertiary:  var(--space-white-700);
+
+  /* Borders */
+  --border-default: var(--secondary-700);
+  --border-subtle:  var(--secondary-600);
+  --border-brand-default: var(--secondary-300);
+  --border-brand-subtle:  var(--secondary-300);
+  --border-input-default: var(--secondary-600);
+
+  /* Shadow-Border — dark adjustments */
+  --shadow-border:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.08),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.4),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.3);
+  --shadow-border-hover:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.10),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.5),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0px 0px 0px 1px rgba(255, 255, 255, 0.08);
+
+  /* Keycap shadows — dark */
+  --shadow-keycap:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.10),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.4),
+    0px 3px 0px 0px rgba(255, 255, 255, 0.06);
+  --shadow-keycap-hover:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.14),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.5),
+    0px 3px 0px 0px rgba(255, 255, 255, 0.10);
+  --shadow-keycap-pressed:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.10),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.4),
+    0px 0px 0px 0px rgba(255, 255, 255, 0.00);
+
+  /* Effects — dark */
+  --effect-gravity-bg:   var(--space-white-950);
+  --effect-thinking-dot:  color-mix(in srgb, var(--secondary-500) 50%, transparent);
+  --effect-thinking-line: color-mix(in srgb, var(--secondary-500) 48%, transparent);
+
+  --effect-thinking-1: var(--solar-coral-400);
+  --effect-thinking-2: var(--lumen-yellow-400);
+  --effect-thinking-3: var(--nova-mint-400);
+  --effect-thinking-4: var(--orbit-blue-400);
+  --effect-thinking-5: var(--cosmic-lilac-400);
+
+  --effect-thinking-ship-belly:   var(--solar-coral-400);
+  --effect-thinking-ship-body:    var(--orbit-blue-400);
+  --effect-thinking-ship-dome:    var(--lumen-yellow-400);
+  --effect-thinking-asteroid:     var(--secondary-500);
+}

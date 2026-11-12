@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dotted-background",
+  "title": "DottedBackground",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/DottedBackground.tsx",
+      "content": "import { type CSSProperties, type ReactNode } from \"react\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nconst DOT_COLOR = \"#D0D4DA\";\nconst DOT_SIZE = 2;\nconst DOT_SPACING = 24;\n\nconst dotPatternStyle: CSSProperties = {\n  backgroundImage: `radial-gradient(circle, ${DOT_COLOR} ${DOT_SIZE / 2}px, transparent ${DOT_SIZE / 2}px)`,\n  backgroundSize: `${DOT_SPACING}px ${DOT_SPACING}px`,\n};\n\ninterface DottedBackgroundProps {\n  className?: string;\n  children?: ReactNode;\n}\n\n/**\n * Surface backdrop tiled with a fixed-size dot grid. Wrap a full-height\n * container (e.g. a route layout) to apply it behind the content.\n */\nexport function DottedBackground({\n  className,\n  children,\n}: DottedBackgroundProps) {\n  return (\n    <div\n      className={cn(\"bg-(--bg-surface-base)\", className)}\n      style={dotPatternStyle}\n    >\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/DottedBackground.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

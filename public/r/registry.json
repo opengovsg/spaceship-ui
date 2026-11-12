@@ -1,0 +1,2082 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "spaceship-ui",
+  "homepage": "https://spaceship-ui.vercel.app",
+  "items": [
+    {
+      "name": "app-modal",
+      "type": "registry:ui",
+      "title": "AppModal",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/modal.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/AppModal.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/AppModal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "callout",
+      "type": "registry:ui",
+      "title": "Callout",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/Callout.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/Callout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/Card.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/Card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "dependencies": [
+        "react-icons"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/Checkbox.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/Checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dot-sphere",
+      "type": "registry:ui",
+      "title": "DotSphere",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/DotSphere.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/DotSphere.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:ui",
+      "title": "IconButton",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/button.json",
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/IconButton.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/IconButton.tsx"
+        }
+      ]
+    },
+    {
+      "name": "labeled-tooltip",
+      "type": "registry:ui",
+      "title": "LabeledTooltip",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/LabeledTooltip.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/LabeledTooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "otpinput",
+      "type": "registry:ui",
+      "title": "OTPInput",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/OTPInput.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/OTPInput.tsx"
+        }
+      ]
+    },
+    {
+      "name": "problem-statement-lines",
+      "type": "registry:ui",
+      "title": "ProblemStatementLines",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/flowchart.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/ProblemStatementLines.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/ProblemStatementLines.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "ProgressBar",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/ProgressBar.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/ProgressBar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "dependencies": [
+        "react-icons"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/Select.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/Select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spaceship-logo",
+      "type": "registry:ui",
+      "title": "Spaceship Logo",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipLogoScene.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipLogoScene.tsx"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipLogoV2.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipLogoV2.tsx"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipMark.css",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipMark.css"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipMark.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipMark.tsx"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipPlanet.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipPlanet.tsx"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipStar.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipStar.tsx"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipWordmark.css",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipWordmark.css"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/SpaceshipWordmark.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/SpaceshipWordmark.tsx"
+        },
+        {
+          "path": "registry/ui/SpaceshipLogo/index.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/SpaceshipLogo/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/Spinner.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/Spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stage-navigation",
+      "type": "registry:ui",
+      "title": "StageNavigation",
+      "dependencies": [
+        "@radix-ui/react-tabs",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/sidebar-hover-group.json",
+        "https://spaceship-ui.vercel.app/r/tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/StageNavigation.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/StageNavigation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-indicator",
+      "type": "registry:ui",
+      "title": "StatusIndicator",
+      "dependencies": [
+        "usehooks-ts"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/StatusIndicator.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/StatusIndicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/tab-bar.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/Tabs.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/Tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "title",
+      "type": "registry:ui",
+      "title": "Title",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/Title.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/Title.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-icons",
+      "type": "registry:ui",
+      "title": "animated-icons",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/animated-icons.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/animated-icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "approval-card",
+      "type": "registry:ui",
+      "title": "approval-card",
+      "dependencies": [
+        "@radix-ui/react-scroll-area",
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/button.json",
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/resolve-color.json",
+        "https://spaceship-ui.vercel.app/r/use-drag-resize.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/approval-card.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/approval-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "artifact-tabs",
+      "type": "registry:ui",
+      "title": "artifact-tabs",
+      "dependencies": [
+        "@radix-ui/react-tabs",
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/artifact-tabs.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/artifact-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "button",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/resolve-color.json",
+        "https://spaceship-ui.vercel.app/r/spinner.json",
+        "https://spaceship-ui.vercel.app/r/tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-bubble",
+      "type": "registry:ui",
+      "title": "chat-bubble",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/chat-bubble.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/chat-bubble.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-input-box",
+      "type": "registry:ui",
+      "title": "chat-input-box",
+      "dependencies": [
+        "@radix-ui/react-label",
+        "class-variance-authority",
+        "lucide-react",
+        "react-textarea-autosize"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/button.json",
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/use-textarea-width.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/chat-input-box.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/chat-input-box.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-message",
+      "type": "registry:ui",
+      "title": "chat-message",
+      "dependencies": [
+        "@radix-ui/react-visually-hidden",
+        "framer-motion",
+        "react-markdown",
+        "remark-breaks",
+        "remark-gfm"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/chat-message.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/chat-message.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-thread",
+      "type": "registry:ui",
+      "title": "chat-thread",
+      "dependencies": [
+        "@radix-ui/react-scroll-area",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/chat-thread.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/chat-thread.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "checkbox-group",
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "@radix-ui/react-separator",
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/checkbox-group.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/checkbox-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "clarification-card-shared",
+      "type": "registry:ui",
+      "title": "clarification-card-shared",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/clarification-card-shared.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/clarification-card-shared.tsx"
+        }
+      ]
+    },
+    {
+      "name": "clarification-card",
+      "type": "registry:ui",
+      "title": "clarification-card",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "react-textarea-autosize"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/button.json",
+        "https://spaceship-ui.vercel.app/r/clarification-card-shared.json",
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/scroll-fade.json",
+        "https://spaceship-ui.vercel.app/r/sidebar-hover-group.json",
+        "https://spaceship-ui.vercel.app/r/sortable-list.json",
+        "https://spaceship-ui.vercel.app/r/tooltip.json",
+        "https://spaceship-ui.vercel.app/r/use-textarea-width.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/clarification-card.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/clarification-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deployed-version-card",
+      "type": "registry:ui",
+      "title": "deployed-version-card",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/relative-date.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/deployed-version-card.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/deployed-version-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "dropdown-menu",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/sidebar-hover-group.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/dropdown-menu.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feedback-form",
+      "type": "registry:ui",
+      "title": "feedback-form",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/button.json",
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/feedback-form.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/feedback-form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flowchart",
+      "type": "registry:ui",
+      "title": "Flowchart",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/problem-statement-lines.json",
+        "https://spaceship-ui.vercel.app/r/tag.json",
+        "https://spaceship-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/flowchart/FlowchartCanvas.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/FlowchartCanvas.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/edge-path.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/edge-path.ts"
+        },
+        {
+          "path": "registry/ui/flowchart/index.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/index.ts"
+        },
+        {
+          "path": "registry/ui/flowchart/layout.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/layout.ts"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/CardContentSlot.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/CardContentSlot.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/DocumentNode.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/DocumentNode.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/FutureStepNode.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/FutureStepNode.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/NewItemCTANode.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/NewItemCTANode.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/NodeFrame.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/NodeFrame.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/ProblemStatementNode.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/ProblemStatementNode.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/PrototypeNode.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/PrototypeNode.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/StatusBadge.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/StatusBadge.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/nodes/index.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/nodes/index.tsx"
+        },
+        {
+          "path": "registry/ui/flowchart/types.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/types.ts"
+        },
+        {
+          "path": "registry/ui/flowchart/viewport.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/flowchart/viewport.ts"
+        }
+      ]
+    },
+    {
+      "name": "folder-tabs-v2",
+      "type": "registry:ui",
+      "title": "folder-tabs-v2",
+      "dependencies": [
+        "@radix-ui/react-tabs",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/folder-tabs-v2.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/folder-tabs-v2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "folder-tabs",
+      "type": "registry:ui",
+      "title": "folder-tabs",
+      "dependencies": [
+        "@radix-ui/react-tabs",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/folder-tabs.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/folder-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gated-action-bar",
+      "type": "registry:ui",
+      "title": "gated-action-bar",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/gated-action-bar.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/gated-action-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-weight",
+      "type": "registry:lib",
+      "title": "icon-weight",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/icon-weight.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/icon-weight.ts"
+        }
+      ]
+    },
+    {
+      "name": "ui-index",
+      "type": "registry:lib",
+      "title": "index",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/animated-icons.json",
+        "https://spaceship-ui.vercel.app/r/app-modal.json",
+        "https://spaceship-ui.vercel.app/r/approval-card.json",
+        "https://spaceship-ui.vercel.app/r/artifact-tabs.json",
+        "https://spaceship-ui.vercel.app/r/button.json",
+        "https://spaceship-ui.vercel.app/r/callout.json",
+        "https://spaceship-ui.vercel.app/r/card.json",
+        "https://spaceship-ui.vercel.app/r/chat-bubble.json",
+        "https://spaceship-ui.vercel.app/r/chat-input-box.json",
+        "https://spaceship-ui.vercel.app/r/chat-message.json",
+        "https://spaceship-ui.vercel.app/r/chat-thread.json",
+        "https://spaceship-ui.vercel.app/r/checkbox-group.json",
+        "https://spaceship-ui.vercel.app/r/checkbox.json",
+        "https://spaceship-ui.vercel.app/r/clarification-card-shared.json",
+        "https://spaceship-ui.vercel.app/r/clarification-card.json",
+        "https://spaceship-ui.vercel.app/r/deployed-version-card.json",
+        "https://spaceship-ui.vercel.app/r/dot-sphere.json",
+        "https://spaceship-ui.vercel.app/r/dropdown-menu.json",
+        "https://spaceship-ui.vercel.app/r/feedback-form.json",
+        "https://spaceship-ui.vercel.app/r/flowchart.json",
+        "https://spaceship-ui.vercel.app/r/folder-tabs-v2.json",
+        "https://spaceship-ui.vercel.app/r/folder-tabs.json",
+        "https://spaceship-ui.vercel.app/r/gated-action-bar.json",
+        "https://spaceship-ui.vercel.app/r/icon-button.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/keycap.json",
+        "https://spaceship-ui.vercel.app/r/labeled-tooltip.json",
+        "https://spaceship-ui.vercel.app/r/markdown-prose.json",
+        "https://spaceship-ui.vercel.app/r/modal.json",
+        "https://spaceship-ui.vercel.app/r/notice.json",
+        "https://spaceship-ui.vercel.app/r/otpinput.json",
+        "https://spaceship-ui.vercel.app/r/panel-resize-handle.json",
+        "https://spaceship-ui.vercel.app/r/problem-statement-lines.json",
+        "https://spaceship-ui.vercel.app/r/progress-bar.json",
+        "https://spaceship-ui.vercel.app/r/radio-group.json",
+        "https://spaceship-ui.vercel.app/r/response-activity.json",
+        "https://spaceship-ui.vercel.app/r/scroll-fade.json",
+        "https://spaceship-ui.vercel.app/r/segmented-control.json",
+        "https://spaceship-ui.vercel.app/r/select.json",
+        "https://spaceship-ui.vercel.app/r/shimmer-text.json",
+        "https://spaceship-ui.vercel.app/r/sidebar-hover-group.json",
+        "https://spaceship-ui.vercel.app/r/solution-brief-card.json",
+        "https://spaceship-ui.vercel.app/r/sortable-list.json",
+        "https://spaceship-ui.vercel.app/r/spaceship-logo.json",
+        "https://spaceship-ui.vercel.app/r/spinner.json",
+        "https://spaceship-ui.vercel.app/r/stage-navigation.json",
+        "https://spaceship-ui.vercel.app/r/status-indicator.json",
+        "https://spaceship-ui.vercel.app/r/tab-bar.json",
+        "https://spaceship-ui.vercel.app/r/tabs.json",
+        "https://spaceship-ui.vercel.app/r/tag.json",
+        "https://spaceship-ui.vercel.app/r/task-list.json",
+        "https://spaceship-ui.vercel.app/r/thinking-orb.json",
+        "https://spaceship-ui.vercel.app/r/thinking-steps.json",
+        "https://spaceship-ui.vercel.app/r/thinking.json",
+        "https://spaceship-ui.vercel.app/r/title.json",
+        "https://spaceship-ui.vercel.app/r/tooltip.json",
+        "https://spaceship-ui.vercel.app/r/use-reduced-motion.json",
+        "https://spaceship-ui.vercel.app/r/use-resizable-panel.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/index.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "keycap",
+      "type": "registry:ui",
+      "title": "keycap",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/keycap.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/keycap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "markdown-prose",
+      "type": "registry:ui",
+      "title": "markdown-prose",
+      "dependencies": [
+        "class-variance-authority",
+        "react-markdown",
+        "remark-gfm"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/markdown-prose.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/markdown-prose.tsx"
+        }
+      ]
+    },
+    {
+      "name": "modal",
+      "type": "registry:ui",
+      "title": "modal",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/modal.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/modal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "notice",
+      "type": "registry:ui",
+      "title": "notice",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/callout.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/notice.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/notice.tsx"
+        }
+      ]
+    },
+    {
+      "name": "panel-resize-handle",
+      "type": "registry:ui",
+      "title": "panel-resize-handle",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/use-resizable-panel.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/panel-resize-handle.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/panel-resize-handle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "radio-group",
+      "dependencies": [
+        "@radix-ui/react-radio-group",
+        "@radix-ui/react-separator",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/radio-group.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "relative-date",
+      "type": "registry:ui",
+      "title": "relative-date",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/relative-date.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/relative-date.tsx"
+        }
+      ]
+    },
+    {
+      "name": "response-activity",
+      "type": "registry:ui",
+      "title": "response-activity",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/resolve-color.json",
+        "https://spaceship-ui.vercel.app/r/thinking-orb.json",
+        "https://spaceship-ui.vercel.app/r/thinking-steps.json",
+        "https://spaceship-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/response-activity.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/response-activity.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-fade",
+      "type": "registry:ui",
+      "title": "scroll-fade",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/scroll-fade.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/scroll-fade.tsx"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "segmented-control",
+      "dependencies": [
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/segmented-control.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/segmented-control.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-text",
+      "type": "registry:ui",
+      "title": "shimmer-text",
+      "dependencies": [
+        "@radix-ui/react-visually-hidden",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/shimmer-text.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/shimmer-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-hover-group",
+      "type": "registry:ui",
+      "title": "sidebar-hover-group",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/sidebar-hover-group.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/sidebar-hover-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "solution-brief-card",
+      "type": "registry:ui",
+      "title": "solution-brief-card",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/button.json",
+        "https://spaceship-ui.vercel.app/r/clarification-card-shared.json",
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/use-drag-resize.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/solution-brief-card.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/solution-brief-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
+      "type": "registry:ui",
+      "title": "sortable-list",
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "@radix-ui/react-separator",
+        "@radix-ui/react-visually-hidden",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/sortable-list.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/sortable-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tab-bar",
+      "type": "registry:ui",
+      "title": "tab-bar",
+      "dependencies": [
+        "@radix-ui/react-tabs",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tab-bar.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/tab-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "type": "registry:ui",
+      "title": "tag",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icon-weight.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tag.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/tag.tsx"
+        }
+      ]
+    },
+    {
+      "name": "task-list",
+      "type": "registry:ui",
+      "title": "task-list",
+      "dependencies": [
+        "@radix-ui/react-collapsible",
+        "@radix-ui/react-progress",
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/task-list.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/task-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-orb",
+      "type": "registry:ui",
+      "title": "thinking-orb",
+      "dependencies": [
+        "@radix-ui/react-visually-hidden",
+        "class-variance-authority",
+        "thinking-orbs"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/thinking-orb.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/thinking-orb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-steps",
+      "type": "registry:ui",
+      "title": "thinking-steps",
+      "dependencies": [
+        "@radix-ui/react-collapsible",
+        "class-variance-authority",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/shimmer-text.json",
+        "https://spaceship-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/thinking-steps.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/thinking-steps.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking",
+      "type": "registry:ui",
+      "title": "thinking",
+      "dependencies": [
+        "@radix-ui/react-visually-hidden",
+        "class-variance-authority",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/shimmer-text.json",
+        "https://spaceship-ui.vercel.app/r/spaceship-logo.json",
+        "https://spaceship-ui.vercel.app/r/thinking-orb.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/thinking.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/thinking.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "tooltip",
+      "dependencies": [
+        "@radix-ui/react-tooltip",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tooltip.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "use-drag-resize",
+      "type": "registry:hook",
+      "title": "use-drag-resize",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/use-drag-resize.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/use-drag-resize.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-reduced-motion",
+      "type": "registry:hook",
+      "title": "use-reduced-motion",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/use-reduced-motion.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/use-reduced-motion.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-resizable-panel",
+      "type": "registry:hook",
+      "title": "use-resizable-panel",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/use-resizable-panel.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/use-resizable-panel.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-textarea-width",
+      "type": "registry:hook",
+      "title": "use-textarea-width",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/use-textarea-width.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/use-textarea-width.ts"
+        }
+      ]
+    },
+    {
+      "name": "answer-recap",
+      "type": "registry:block",
+      "title": "AnswerRecap",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/AnswerRecap.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/AnswerRecap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "artifact-content-renderer",
+      "type": "registry:block",
+      "title": "ArtifactContentRenderer",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/artifact-types.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ArtifactContentRenderer.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ArtifactContentRenderer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "artifact-panel",
+      "type": "registry:block",
+      "title": "ArtifactPanel",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ArtifactPanel.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ArtifactPanel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "artifact-segmented-control",
+      "type": "registry:block",
+      "title": "ArtifactSegmentedControl",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/artifact-content-renderer.json",
+        "https://spaceship-ui.vercel.app/r/artifact-types.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ArtifactSegmentedControl.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ArtifactSegmentedControl.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-panel",
+      "type": "registry:block",
+      "title": "ChatPanel",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/chat-panel-header.json",
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/editable-title.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ChatPanel.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ChatPanel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-panel-header",
+      "type": "registry:block",
+      "title": "ChatPanelHeader",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ChatPanelHeader.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ChatPanelHeader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-user-message",
+      "type": "registry:block",
+      "title": "ChatUserMessage",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/answer-recap.json",
+        "https://spaceship-ui.vercel.app/r/format-guided-answers.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ChatUserMessage.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ChatUserMessage.tsx"
+        }
+      ]
+    },
+    {
+      "name": "clarification-form",
+      "type": "registry:block",
+      "title": "ClarificationForm",
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ClarificationForm.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ClarificationForm.tsx"
+        }
+      ]
+    },
+    {
+      "name": "delete-confirmation-modal",
+      "type": "registry:block",
+      "title": "DeleteConfirmationModal",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/DeleteConfirmationModal.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/DeleteConfirmationModal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dotted-background",
+      "type": "registry:block",
+      "title": "DottedBackground",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/DottedBackground.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/DottedBackground.tsx"
+        }
+      ]
+    },
+    {
+      "name": "editable-title",
+      "type": "registry:block",
+      "title": "EditableTitle",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/EditableTitle.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/EditableTitle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "page-frame",
+      "type": "registry:block",
+      "title": "Page Frame",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/PageFrame/PageFrame.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/PageFrame/PageFrame.tsx"
+        },
+        {
+          "path": "registry/patterns/PageFrame/index.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/PageFrame/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "preview-link",
+      "type": "registry:block",
+      "title": "PreviewLink",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/PreviewLink.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/PreviewLink.tsx"
+        }
+      ]
+    },
+    {
+      "name": "preview-panel",
+      "type": "registry:block",
+      "title": "PreviewPanel",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/preview-panel-header.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/PreviewPanel.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/PreviewPanel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "preview-panel-header",
+      "type": "registry:block",
+      "title": "PreviewPanelHeader",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/PreviewPanelHeader.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/PreviewPanelHeader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "problem-statement-prose",
+      "type": "registry:block",
+      "title": "ProblemStatementProse",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ProblemStatementProse.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ProblemStatementProse.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prototype-url-bar",
+      "type": "registry:block",
+      "title": "PrototypeUrlBar",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/PrototypeUrlBar.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/PrototypeUrlBar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rename-project-title",
+      "type": "registry:block",
+      "title": "RenameProjectTitle",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/RenameProjectTitle.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/RenameProjectTitle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rubric-checklist",
+      "type": "registry:block",
+      "title": "RubricChecklist",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/RubricChecklist.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/RubricChecklist.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shareable-link",
+      "type": "registry:block",
+      "title": "ShareableLink",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "react-use-measure"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/ShareableLink.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/ShareableLink.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:block",
+      "title": "Sidebar",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/icons.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/Sidebar/Sidebar.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/Sidebar/Sidebar.tsx"
+        },
+        {
+          "path": "registry/patterns/Sidebar/SidebarFooter.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/Sidebar/SidebarFooter.tsx"
+        },
+        {
+          "path": "registry/patterns/Sidebar/index.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/Sidebar/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "testing-nav",
+      "type": "registry:block",
+      "title": "TestingNav",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/TestingNav.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/TestingNav.tsx"
+        }
+      ]
+    },
+    {
+      "name": "two-column-layout",
+      "type": "registry:block",
+      "title": "TwoColumnLayout",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/classnames.json",
+        "https://spaceship-ui.vercel.app/r/motion.json",
+        "https://spaceship-ui.vercel.app/r/ui-index.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/TwoColumnLayout.tsx",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/TwoColumnLayout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "artifact-types",
+      "type": "registry:lib",
+      "title": "artifact-types",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/patterns/artifact-types.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/artifact-types.ts"
+        }
+      ]
+    },
+    {
+      "name": "patterns-index",
+      "type": "registry:lib",
+      "title": "index",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://spaceship-ui.vercel.app/r/answer-recap.json",
+        "https://spaceship-ui.vercel.app/r/artifact-content-renderer.json",
+        "https://spaceship-ui.vercel.app/r/artifact-panel.json",
+        "https://spaceship-ui.vercel.app/r/artifact-segmented-control.json",
+        "https://spaceship-ui.vercel.app/r/artifact-types.json",
+        "https://spaceship-ui.vercel.app/r/chat-panel-header.json",
+        "https://spaceship-ui.vercel.app/r/chat-panel.json",
+        "https://spaceship-ui.vercel.app/r/chat-user-message.json",
+        "https://spaceship-ui.vercel.app/r/clarification-form.json",
+        "https://spaceship-ui.vercel.app/r/delete-confirmation-modal.json",
+        "https://spaceship-ui.vercel.app/r/dotted-background.json",
+        "https://spaceship-ui.vercel.app/r/editable-title.json",
+        "https://spaceship-ui.vercel.app/r/page-frame.json",
+        "https://spaceship-ui.vercel.app/r/preview-link.json",
+        "https://spaceship-ui.vercel.app/r/preview-panel-header.json",
+        "https://spaceship-ui.vercel.app/r/preview-panel.json",
+        "https://spaceship-ui.vercel.app/r/problem-statement-prose.json",
+        "https://spaceship-ui.vercel.app/r/prototype-url-bar.json",
+        "https://spaceship-ui.vercel.app/r/rename-project-title.json",
+        "https://spaceship-ui.vercel.app/r/rubric-checklist.json",
+        "https://spaceship-ui.vercel.app/r/shareable-link.json",
+        "https://spaceship-ui.vercel.app/r/sidebar.json",
+        "https://spaceship-ui.vercel.app/r/testing-nav.json",
+        "https://spaceship-ui.vercel.app/r/two-column-layout.json"
+      ],
+      "files": [
+        {
+          "path": "registry/patterns/index.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/patterns/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "classnames",
+      "type": "registry:lib",
+      "title": "classnames",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/lib/classnames.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/lib/classnames.ts"
+        }
+      ]
+    },
+    {
+      "name": "format-guided-answers",
+      "type": "registry:lib",
+      "title": "format-guided-answers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/lib/format-guided-answers.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/lib/format-guided-answers.ts"
+        }
+      ]
+    },
+    {
+      "name": "motion",
+      "type": "registry:lib",
+      "title": "motion",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/lib/motion.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/lib/motion.ts"
+        }
+      ]
+    },
+    {
+      "name": "resolve-color",
+      "type": "registry:lib",
+      "title": "resolve-color",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/lib/resolve-color.ts",
+          "type": "registry:file",
+          "target": "src/components/ds/lib/resolve-color.ts"
+        }
+      ]
+    },
+    {
+      "name": "surfaces",
+      "type": "registry:style",
+      "title": "surfaces",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/tokens/surfaces.css",
+          "type": "registry:file",
+          "target": "src/components/ds/tokens/surfaces.css"
+        }
+      ]
+    },
+    {
+      "name": "theme",
+      "type": "registry:style",
+      "title": "theme",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/tokens/theme.css",
+          "type": "registry:file",
+          "target": "src/components/ds/tokens/theme.css"
+        }
+      ]
+    },
+    {
+      "name": "tokens",
+      "type": "registry:style",
+      "title": "tokens",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/tokens/tokens.css",
+          "type": "registry:file",
+          "target": "src/components/ds/tokens/tokens.css"
+        }
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:style",
+      "title": "typography",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/tokens/typography.css",
+          "type": "registry:file",
+          "target": "src/components/ds/tokens/typography.css"
+        }
+      ]
+    },
+    {
+      "name": "icons",
+      "type": "registry:file",
+      "title": "Icons",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/icons/collapse-alt.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/collapse-alt.svg"
+        },
+        {
+          "path": "registry/icons/create-solution-cta.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/create-solution-cta.svg"
+        },
+        {
+          "path": "registry/icons/edit-problem-statement-cta.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/edit-problem-statement-cta.svg"
+        },
+        {
+          "path": "registry/icons/help-circle.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/help-circle.svg"
+        },
+        {
+          "path": "registry/icons/log-out.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/log-out.svg"
+        },
+        {
+          "path": "registry/icons/mail-send.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/mail-send.svg"
+        },
+        {
+          "path": "registry/icons/new-project.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/new-project.svg"
+        },
+        {
+          "path": "registry/icons/solution-badges/solution-action-required.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/solution-badges/solution-action-required.svg"
+        },
+        {
+          "path": "registry/icons/solution-badges/solution-building.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/solution-badges/solution-building.svg"
+        },
+        {
+          "path": "registry/icons/solution-badges/solution-built.svg",
+          "type": "registry:file",
+          "target": "src/components/ds/icons/solution-badges/solution-built.svg"
+        }
+      ]
+    },
+    {
+      "name": "ds-root",
+      "type": "registry:file",
+      "title": "Ds Root",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/AGENTS.md",
+          "type": "registry:file",
+          "target": "src/components/ds/AGENTS.md"
+        },
+        {
+          "path": "registry/CLAUDE.md",
+          "type": "registry:file",
+          "target": "src/components/ds/CLAUDE.md"
+        }
+      ]
+    }
+  ]
+}

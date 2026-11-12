@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gated-action-bar",
+  "title": "gated-action-bar",
+  "dependencies": [
+    "class-variance-authority",
+    "framer-motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/motion.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/gated-action-bar.tsx",
+      "content": "\"use client\";\n\nimport { forwardRef, type ReactNode } from \"react\";\nimport { motion, type HTMLMotionProps } from \"framer-motion\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { ArrowRight, Lock } from \"lucide-react\";\nimport { cn } from \"#/components/ds/lib/classnames\";\nimport { springs } from \"#/components/ds/lib/motion\";\n\n// ─── Constants ────────────────────────────────────────────────────────────────\n\nconst SCALE = { hover: 1.01, tap: 0.99 };\n\n// ─── CVA ──────────────────────────────────────────────────────────────────────\n\nexport const gatedActionBarVariants = cva(\n  [\n    \"flex w-full items-center justify-between gap-2\",\n    \"p-4 rounded-lg\",\n    \"font-sans text-body [font-weight:var(--font-weight-semibold)]\",\n    \"transition-colors duration-(--duration-base) ease-(--ease-in-out)\",\n    \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset\",\n    \"focus-visible:ring-(--border-input-focus)\",\n  ],\n  {\n    variants: {\n      state: {\n        locked: [\n          \"border border-dashed border-(--border-default) bg-(--bg-surface-tertiary)\",\n          \"text-(--text-interactive-disabled) cursor-not-allowed\",\n        ],\n        unlocked: [\n          \"bg-(--bg-interactive-primary-default) text-(--text-inverse)\",\n          \"hover:bg-(--bg-interactive-primary-hover)\",\n          \"active:bg-(--bg-interactive-primary-pressed)\",\n          \"cursor-pointer\",\n        ],\n      },\n      surface: {\n        default: \"\",\n        \"shadow-border\": \"\",\n      },\n    },\n    compoundVariants: [\n      // Only the unlocked bar reads as raised; a locked one stays flat so the\n      // dashed border remains the thing that signals \"not yet\".\n      {\n        state: \"unlocked\",\n        surface: \"shadow-border\",\n        className: \"shadow-(--shadow-border)\",\n      },\n    ],\n    defaultVariants: { state: \"locked\", surface: \"default\" },\n  },\n);\n\n// ─── Props ────────────────────────────────────────────────────────────────────\n\nexport interface GatedActionBarProps\n  extends\n    Omit<HTMLMotionProps<\"button\">, \"children\">,\n    VariantProps<typeof gatedActionBarVariants> {\n  children?: ReactNode;\n  /** Overrides the state's default trailing icon (`Lock` / `ArrowRight`). */\n  trailingIcon?: ReactNode;\n  disableMotion?: boolean;\n}\n\n// ─── Component ────────────────────────────────────────────────────────────────\n\nexport const GatedActionBar = forwardRef<\n  HTMLButtonElement,\n  GatedActionBarProps\n>(function GatedActionBar(\n  {\n    state = \"locked\",\n    surface,\n    trailingIcon,\n    disableMotion = false,\n    className,\n    children,\n    ...props\n  },\n  ref,\n) {\n  const isLocked = state === \"locked\";\n  const classes = cn(gatedActionBarVariants({ state, surface }), className);\n  const content = (\n    <>\n      <span className=\"text-left\">{children}</span>\n      <span className=\"inline-flex shrink-0 items-center justify-center [&>svg]:size-5\">\n        {trailingIcon ?? (isLocked ? <Lock /> : <ArrowRight />)}\n      </span>\n    </>\n  );\n\n  // A locked bar is a real disabled button — it must not be focusable as an\n  // action, and it must not animate.\n  if (isLocked || disableMotion) {\n    return (\n      <button\n        ref={ref}\n        type=\"button\"\n        aria-disabled={isLocked || undefined}\n        tabIndex={isLocked ? -1 : undefined}\n        className={classes}\n        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}\n        onClick={isLocked ? undefined : props.onClick}\n      >\n        {content}\n      </button>\n    );\n  }\n\n  return (\n    <motion.button\n      ref={ref}\n      type=\"button\"\n      className={classes}\n      {...props}\n      whileHover={{ scale: SCALE.hover }}\n      whileTap={{ scale: SCALE.tap }}\n      transition={springs.interactive}\n      style={{ willChange: \"transform\" }}\n    >\n      {content}\n    </motion.button>\n  );\n});\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/gated-action-bar.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

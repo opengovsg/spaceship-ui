@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "keycap",
+  "title": "keycap",
+  "dependencies": [
+    "class-variance-authority",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/keycap.tsx",
+      "content": "\"use client\";\n\nimport React, { type ReactNode } from \"react\";\nimport { motion, type HTMLMotionProps } from \"framer-motion\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\n// ─── CVA ─────────────────────────────────────────────────────────────────────\n\nexport const keycapVariants = cva(\n  [\n    \"inline-flex items-center justify-center\",\n    \"min-w-[26px] h-[22px] px-1.5\",\n    \"rounded-sm\",\n    \"font-sans text-caption [font-weight:var(--font-weight-semibold)]\",\n    \"leading-none\",\n    \"select-none\",\n  ],\n  {\n    variants: {\n      variant: {\n        default: \"bg-(--bg-surface-base) text-(--text-tertiary)\",\n        lit: \"bg-(--bg-status-warning) text-(--text-status-warning)\",\n      },\n      surface: {\n        default: \"\",\n        \"shadow-border\": \"\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      surface: \"default\",\n    },\n  },\n);\n\n// ─── Types ───────────────────────────────────────────────────────────────────\n\nexport interface KeycapProps\n  extends HTMLMotionProps<\"kbd\">, VariantProps<typeof keycapVariants> {\n  /** Programmatic press state — use to sync with actual keydown events. */\n  pressed?: boolean;\n  disableMotion?: boolean;\n  children?: ReactNode;\n}\n\nexport type KeycapVariant = NonNullable<\n  VariantProps<typeof keycapVariants>[\"variant\"]\n>;\n\n// ━━━ Keycap ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n/** Fast snap spring — ζ = 80 / (2 × √2000) ≈ 0.89, no oscillation. */\nconst PRESS_SPRING = { type: \"spring\", stiffness: 2000, damping: 80 } as const;\n\nexport function Keycap({\n  className,\n  variant,\n  surface,\n  pressed = false,\n  disableMotion = false,\n  children,\n  ...props\n}: KeycapProps) {\n  return (\n    <motion.kbd\n      {...props}\n      animate={{ y: pressed ? 1 : 0 }}\n      transition={disableMotion ? { duration: 0 } : PRESS_SPRING}\n      style={{ willChange: \"transform\" }}\n      className={cn(\n        keycapVariants({ variant, surface }),\n        \"shadow-keycap\",\n        \"hover:shadow-keycap-hover\",\n        \"[transition:box-shadow_80ms_ease]\",\n        pressed && \"shadow-keycap-pressed\",\n        !pressed && \"active:shadow-keycap-pressed\",\n        className,\n      )}\n    >\n      {children}\n    </motion.kbd>\n  );\n}\n\n// ━━━ KeyCombo — renders multiple keycaps with separator ━━━━━━━━━━━━━━━━━━━━━\n\nexport interface KeyComboProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** Separator rendered between keys. Defaults to \"+\". */\n  separator?: ReactNode;\n  surface?: VariantProps<typeof keycapVariants>[\"surface\"];\n  children?: ReactNode;\n}\n\nexport function KeyCombo({\n  className,\n  separator = \"+\",\n  surface,\n  children,\n  ...props\n}: KeyComboProps) {\n  const keys = React.Children.toArray(children);\n  return (\n    <span\n      className={cn(\"inline-flex items-center gap-1\", className)}\n      {...props}\n    >\n      {keys.map((child, i) => (\n        <React.Fragment key={i}>\n          {i > 0 && (\n            <span\n              aria-hidden=\"true\"\n              className=\"text-caption [font-weight:var(--font-weight-semibold)] text-(--text-tertiary) font-sans select-none\"\n            >\n              {separator}\n            </span>\n          )}\n          {typeof child === \"string\" ? (\n            <Keycap surface={surface}>{child}</Keycap>\n          ) : (\n            child\n          )}\n        </React.Fragment>\n      ))}\n    </span>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/keycap.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,745 @@
+/* App-owned light primitives supplement the synced anchors in tokens.css. */
+:root {
+  --activity-tint-1: var(--solar-coral-400);
+  --activity-tint-2: var(--lumen-yellow-400);
+  --activity-tint-3: var(--nova-mint-400);
+  --activity-tint-4: var(--orbit-blue-400);
+  --activity-tint-5: var(--cosmic-lilac-400);
+  --bg-composer-context: var(--space-white-100);
+  --radius-inner: var(--radius-lg);
+  --radius-input-card: var(--radius-2xl);
+  --radius-feedback: var(--radius-2xl);
+  --bg-workspace-dot: var(--space-white-300);
+  --space-white-0: #ffffff;
+  --space-white-10: #fdfefe;
+  --space-white-40: #fafbfc;
+  --space-white-60: #f7f9fa;
+  --space-white-75: #f6f8fa;
+  --space-white-90: #f4f6f9;
+  --space-white-125: #eff2f5;
+  --space-white-150: #eceff2;
+}
+
+/* Light elevations use the approved Space White mapping; dark elevations and shadows adapt the original ramp: https://www.fluidfunctionalism.com/r/surfaces.json */
+:root,
+[data-theme="light"] {
+  --surface-1: var(--space-white-50);
+  --surface-2: var(--space-white-25);
+  --surface-3: var(--space-white-0);
+  --surface-4: var(--space-white-0);
+  --surface-5: var(--space-white-0);
+  --surface-6: var(--space-white-0);
+  --surface-7: var(--space-white-0);
+  --surface-8: var(--space-white-0);
+  --bg-resize-handle: var(--space-white-300);
+  --bg-resize-handle-hover: var(--space-white-400);
+  --bg-resize-handle-pressed: var(--space-white-500);
+  --surface-shadow-color: rgb(0 0 0 / 0.06);
+  --surface-shadow-1: 0 0 0 1px var(--surface-shadow-color);
+  --surface-shadow-2:
+    0 0 0 1px var(--surface-shadow-color),
+    0 1px 1px -0.5px var(--surface-shadow-color);
+  --surface-shadow-3:
+    0 0 0 1px var(--surface-shadow-color),
+    0 1px 1px -0.5px var(--surface-shadow-color),
+    0 3px 3px -1.5px var(--surface-shadow-color);
+  --surface-shadow-4:
+    0 0 0 1px var(--surface-shadow-color),
+    0 1px 1px -0.5px var(--surface-shadow-color),
+    0 3px 3px -1.5px var(--surface-shadow-color),
+    0 6px 6px -3px var(--surface-shadow-color);
+  --surface-shadow-5:
+    0 0 0 1px var(--surface-shadow-color),
+    0 1px 1px -0.5px var(--surface-shadow-color),
+    0 3px 3px -1.5px var(--surface-shadow-color),
+    0 6px 6px -3px var(--surface-shadow-color),
+    0 12px 12px -6px var(--surface-shadow-color);
+  --surface-shadow-6:
+    0 0 0 1px var(--surface-shadow-color),
+    0 1px 1px -0.5px var(--surface-shadow-color),
+    0 3px 3px -1.5px var(--surface-shadow-color),
+    0 6px 6px -3px var(--surface-shadow-color),
+    0 12px 12px -6px var(--surface-shadow-color),
+    0 24px 24px -12px var(--surface-shadow-color);
+  --surface-shadow-7:
+    0 0 0 1px var(--surface-shadow-color),
+    0 1px 1px -0.5px var(--surface-shadow-color),
+    0 3px 3px -1.5px var(--surface-shadow-color),
+    0 6px 6px -3px var(--surface-shadow-color),
+    0 12px 12px -6px var(--surface-shadow-color),
+    0 24px 24px -12px var(--surface-shadow-color),
+    0 48px 48px -24px var(--surface-shadow-color);
+  --surface-shadow-8:
+    0 0 0 1px var(--surface-shadow-color),
+    0 1px 1px -0.5px var(--surface-shadow-color),
+    0 3px 3px -1.5px var(--surface-shadow-color),
+    0 6px 6px -3px var(--surface-shadow-color),
+    0 12px 12px -6px var(--surface-shadow-color),
+    0 24px 24px -12px var(--surface-shadow-color),
+    0 48px 48px -24px var(--surface-shadow-color),
+    0 96px 96px -48px var(--surface-shadow-color);
+}
+[data-theme="dark"] {
+  --surface-1: #171717;
+  --surface-2: #1e1e1e;
+  --surface-3: #252525;
+  --surface-4: #2c2c2c;
+  --surface-5: #333333;
+  --surface-6: #3a3a3a;
+  --surface-7: #414141;
+  --surface-8: #484848;
+  --bg-resize-handle: var(--space-white-700);
+  --bg-resize-handle-hover: var(--space-white-600);
+  --bg-resize-handle-pressed: var(--space-white-500);
+  --surface-dm-hi-base: rgba(255, 255, 255, 0.01);
+  --surface-dm-hi-mid: rgba(255, 255, 255, 0.02);
+  --surface-dm-hi-high: rgba(255, 255, 255, 0.04);
+  --surface-dm-hi-peak: rgba(255, 255, 255, 0.06);
+  --surface-dm-ring-base: rgba(255, 255, 255, 0.02);
+  --surface-dm-ring-mid: rgba(255, 255, 255, 0.04);
+  --surface-dm-ring-high: rgba(255, 255, 255, 0.06);
+  --surface-dm-drop: rgba(0, 0, 0, 0.18);
+  --surface-shadow-1: inset 0 0 0 1px var(--surface-dm-ring-base);
+  --surface-shadow-2:
+    inset 0 1px 0 0 var(--surface-dm-hi-base),
+    inset 0 0 0 1px var(--surface-dm-ring-base),
+    0 1px 1px -0.5px var(--surface-dm-drop);
+  --surface-shadow-3:
+    inset 0 1px 0 0 var(--surface-dm-hi-mid),
+    inset 0 0 0 1px var(--surface-dm-ring-base), 0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 1px 1px -0.5px var(--surface-dm-drop),
+    0 3px 3px -1.5px var(--surface-dm-drop);
+  --surface-shadow-4:
+    inset 0 1px 0 0 var(--surface-dm-hi-mid),
+    inset 0 0 0 1px var(--surface-dm-ring-mid), 0 0 0 1px rgba(0, 0, 0, 0.14),
+    0 1px 1px -0.5px var(--surface-dm-drop),
+    0 3px 3px -1.5px var(--surface-dm-drop),
+    0 6px 6px -3px var(--surface-dm-drop);
+  --surface-shadow-5:
+    inset 0 1px 0 0 var(--surface-dm-hi-high),
+    inset 0 0 0 1px var(--surface-dm-ring-mid), 0 0 0 1px rgba(0, 0, 0, 0.16),
+    0 1px 1px -0.5px var(--surface-dm-drop),
+    0 3px 3px -1.5px var(--surface-dm-drop),
+    0 6px 6px -3px var(--surface-dm-drop),
+    0 12px 12px -6px var(--surface-dm-drop);
+  --surface-shadow-6:
+    inset 0 1px 0 0 var(--surface-dm-hi-high),
+    inset 0 0 0 1px var(--surface-dm-ring-high), 0 0 0 1px rgba(0, 0, 0, 0.18),
+    0 1px 1px -0.5px var(--surface-dm-drop),
+    0 3px 3px -1.5px var(--surface-dm-drop),
+    0 6px 6px -3px var(--surface-dm-drop),
+    0 12px 12px -6px var(--surface-dm-drop),
+    0 24px 24px -12px var(--surface-dm-drop);
+  --surface-shadow-7:
+    inset 0 1px 0 0 var(--surface-dm-hi-peak),
+    inset 0 0 0 1px var(--surface-dm-ring-high), 0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 1px 1px -0.5px var(--surface-dm-drop),
+    0 3px 3px -1.5px var(--surface-dm-drop),
+    0 6px 6px -3px var(--surface-dm-drop),
+    0 12px 12px -6px var(--surface-dm-drop),
+    0 24px 24px -12px var(--surface-dm-drop),
+    0 48px 48px -24px var(--surface-dm-drop);
+  --surface-shadow-8:
+    inset 0 1px 0 0 var(--surface-dm-hi-peak),
+    inset 0 0 0 1px var(--surface-dm-ring-high), 0 0 0 1px rgba(0, 0, 0, 0.22),
+    0 1px 1px -0.5px var(--surface-dm-drop),
+    0 3px 3px -1.5px var(--surface-dm-drop),
+    0 6px 6px -3px var(--surface-dm-drop),
+    0 12px 12px -6px var(--surface-dm-drop),
+    0 24px 24px -12px var(--surface-dm-drop),
+    0 48px 48px -24px var(--surface-dm-drop),
+    0 96px 96px -48px var(--surface-dm-drop);
+}
+
+/* App-owned semantic aliases. Primitive colour ramps in tokens.css stay intact. */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  --text-composer-placeholder: var(--text-secondary);
+  --bg-surface-subtle: var(--surface-1);
+  --bg-surface-primary: var(--surface-2);
+  --bg-surface-base: var(--surface-3);
+  --bg-surface-paper: var(--surface-3);
+  --bg-surface-fade: var(--surface-2);
+  --bg-surface-secondary: var(--surface-4);
+  --bg-surface-tertiary: var(--surface-6);
+  --bg-surface-overlay: var(--surface-5);
+  --bg-surface-popover: var(--surface-7);
+  --bg-status-neutral: var(--surface-4);
+  --bg-status-default-neutral: var(--surface-4);
+  --bg-input-default: var(--surface-2);
+  --bg-interactive-primary-disabled: var(--surface-2);
+  --bg-interactive-primary-subtle-disabled: var(--surface-2);
+  --bg-interactive-success-disabled: var(--surface-2);
+  --bg-interactive-success-subtle-disabled: var(--surface-2);
+  --bg-interactive-error-disabled: var(--surface-2);
+  --bg-interactive-error-subtle-disabled: var(--surface-2);
+  --bg-interactive-warning-disabled: var(--surface-2);
+  --bg-interactive-warning-subtle-disabled: var(--surface-2);
+  --bg-interactive-secondary-default: var(--bg-interactive-tertiary-default);
+  --bg-interactive-secondary-hover: var(--bg-interactive-tertiary-hover);
+  --bg-interactive-secondary-pressed: var(--bg-interactive-tertiary-pressed);
+  --bg-interactive-tertiary-default: var(--surface-3);
+  --bg-interactive-tertiary-hover: var(--surface-hover);
+  --bg-interactive-tertiary-pressed: var(--surface-pressed);
+  --bg-sidebar: var(--surface-sidebar);
+  --bg-sidebar-hover: var(--surface-sidebar-hover);
+  --bg-sidebar-selected: var(--bg-sidebar-hover);
+  --bg-sidebar-action-hover: color-mix(
+    in srgb,
+    var(--bg-sidebar-hover) 90%,
+    var(--text-primary) 10%
+  );
+  --bg-sidebar-action-pressed: color-mix(
+    in srgb,
+    var(--bg-sidebar-hover) 85%,
+    var(--text-primary) 15%
+  );
+  --bg-interactive-secondary-disabled: var(--surface-2);
+  --bg-interactive-secondary-ghost-default: transparent;
+  --bg-interactive-secondary-ghost-hover: var(--surface-hover);
+  --bg-interactive-secondary-ghost-pressed: var(--surface-pressed);
+  --bg-interactive-secondary-ghost-disabled: var(--surface-2);
+}
+:root,
+[data-theme="light"] {
+  --surface-sidebar: var(--space-white-90);
+  --surface-sidebar-hover: var(--space-white-150);
+  --text-sidebar-heading: color-mix(
+    in srgb,
+    var(--text-secondary) 20%,
+    var(--text-tertiary)
+  );
+  --surface-hover: var(--space-white-75);
+  --surface-pressed: var(--space-white-125);
+}
+[data-theme="dark"] {
+  --surface-sidebar: #1e1e1e;
+  --surface-sidebar-hover: #2c2c2c;
+  --text-sidebar-heading: var(--text-secondary);
+  --surface-hover: #323232;
+  --surface-pressed: #3b3b3b;
+}
+
+/* A recessed track must stay distinct when elevated light surfaces are white. */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  --bg-segmented-track: var(--surface-pressed);
+  --bg-segmented-selected: var(--bg-surface-base);
+}
+[data-theme="dark"] {
+  --bg-segmented-track: var(--surface-1);
+  --bg-segmented-selected: var(--surface-4);
+}
+
+/* Conversation and navigation roles are owned by the app, not synced tokens. */
+:root,
+[data-theme="light"] {
+  --bg-chat-conversation: var(--surface-1);
+  --bg-chat-user: var(--space-white-150);
+}
+[data-theme="dark"] {
+  --bg-chat-conversation: var(--surface-1);
+  --bg-chat-user: var(--surface-4);
+}
+
+/* Artifact chrome has separate roles from conversation and document surfaces.
+   The embedded page canvas stays white across application themes. */
+:root,
+[data-theme="light"] {
+  --bg-artifact-header: var(--space-white-90);
+  --bg-artifact-address: var(--space-white-40);
+}
+[data-theme="dark"] {
+  --bg-artifact-header: var(--bg-chat-conversation);
+  --bg-artifact-address: var(--bg-input-default);
+}
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  --bg-prototype-canvas: var(--space-white-25);
+}
+
+/* Ghost foregrounds must remain readable on the application's surface ramps.
+   Solid action fills remain owned by the synced design tokens. */
+:root,
+[data-theme="light"] {
+  --text-interactive-primary: var(--orbit-blue-600);
+  --text-interactive-success: var(--nova-mint-600);
+  --text-interactive-error: var(--solar-coral-600);
+  --bg-ghost-success-hover: var(--nova-mint-200);
+  --bg-ghost-success-pressed: var(--nova-mint-300);
+  --bg-ghost-error-hover: var(--solar-coral-200);
+  --bg-ghost-error-pressed: var(--solar-coral-300);
+}
+[data-theme="dark"] {
+  --text-interactive-primary: var(--orbit-blue-300);
+  --text-interactive-success: var(--nova-mint-300);
+  --text-interactive-error: var(--solar-coral-300);
+  --text-status-warning: var(--lumen-yellow-300);
+  --bg-ghost-success-hover: var(--nova-mint-900);
+  --bg-ghost-success-pressed: var(--nova-mint-800);
+  --bg-ghost-error-hover: var(--solar-coral-900);
+  --bg-ghost-error-pressed: var(--solar-coral-800);
+  --bg-interactive-primary-subtle-hover: var(--orbit-blue-900);
+  --bg-interactive-primary-subtle-pressed: var(--orbit-blue-800);
+  --bg-interactive-success-subtle-hover: var(--nova-mint-900);
+  --bg-interactive-success-subtle-pressed: var(--nova-mint-800);
+  --bg-interactive-error-subtle-hover: var(--solar-coral-900);
+  --bg-interactive-error-subtle-pressed: var(--solar-coral-800);
+}
+
+/* Keep navbar hit areas and glyphs fixed while the surrounding groups move. */
+[data-app-navbar] button:is(.bg-transparent, [aria-pressed]) {
+  transform: none !important;
+}
+
+/* The light parent context is inherited through arbitrary layout wrappers.
+   Interaction fills (125–200) intentionally have no parent-context helper. */
+:root,
+[data-theme="light"],
+[data-surface="space-white-0"],
+[data-surface="space-white-10"],
+[data-surface="space-white-25"],
+[class~="bg-(--bg-surface-base)"],
+[class~="bg-(--bg-surface-paper)"],
+[class~="bg-(--bg-surface-primary)"],
+[class~="bg-(--bg-surface-secondary)"],
+[class~="bg-(--bg-surface-overlay)"],
+[class~="bg-(--bg-surface-popover)"],
+[class~="bg-(--bg-surface-tertiary)"],
+[class~="bg-(--bg-surface-fade)"],
+[class~="bg-(--bg-prototype-canvas)"],
+[class~="bg-(--bg-input-default)"] {
+  --bg-context-hover: var(--space-white-75);
+  --bg-context-selected: var(--space-white-75);
+  --bg-context-pressed: var(--space-white-125);
+}
+[data-surface="space-white-40"],
+[data-surface="space-white-50"],
+[class~="bg-(--bg-artifact-address)"],
+[class~="bg-(--bg-surface-subtle)"],
+[class~="bg-(--bg-chat-conversation)"],
+[class~="bg-(--color-canvas)"] {
+  --bg-context-hover: var(--space-white-100);
+  --bg-context-selected: var(--space-white-100);
+  --bg-context-pressed: var(--space-white-150);
+}
+[data-surface="space-white-60"],
+[data-surface="space-white-75"] {
+  --bg-context-hover: var(--space-white-125);
+  --bg-context-selected: var(--space-white-125);
+  --bg-context-pressed: var(--space-white-200);
+}
+[data-surface="space-white-90"],
+[data-surface="space-white-100"],
+[class~="bg-(--bg-artifact-header)"],
+[class~="bg-(--bg-sidebar)"] {
+  --bg-context-hover: var(--space-white-150);
+  --bg-context-selected: var(--space-white-150);
+  --bg-context-pressed: var(--space-white-200);
+}
+[data-surface="space-white-0"] {
+  --bg-context-surface: var(--space-white-0);
+}
+[data-surface="space-white-10"] {
+  --bg-context-surface: var(--space-white-10);
+}
+[data-surface="space-white-25"] {
+  --bg-context-surface: var(--space-white-25);
+}
+[data-surface="space-white-40"] {
+  --bg-context-surface: var(--space-white-40);
+}
+[data-surface="space-white-50"] {
+  --bg-context-surface: var(--space-white-50);
+}
+[data-surface="space-white-60"] {
+  --bg-context-surface: var(--space-white-60);
+}
+[data-surface="space-white-75"] {
+  --bg-context-surface: var(--space-white-75);
+}
+[data-surface="space-white-90"] {
+  --bg-context-surface: var(--space-white-90);
+}
+[data-surface="space-white-100"] {
+  --bg-context-surface: var(--space-white-100);
+}
+
+[data-theme="dark"] {
+  --bg-composer-context: var(--bg-surface-secondary);
+}
+
+/* Callout bodies own their inset; actions stay in a separate right column. */
+.sds-banner {
+  --banner-status: var(--text-secondary);
+  --bg-callout-surface: var(--bg-context-hover, var(--bg-surface-base));
+  --bg-callout-surface-high: color-mix(
+    in oklab,
+    var(--banner-status) 12%,
+    var(--surface-3)
+  );
+  --bg-callout-action-hover: var(--bg-ghost-neutral-hover);
+  --bg-callout-action-pressed: var(--bg-ghost-neutral-pressed);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  padding: 0.5rem;
+  background: var(--bg-callout-surface);
+}
+/* Dark feedback surfaces use semantic fills, independent of light parent steps. */
+@scope ([data-theme="dark"]) to ([data-theme="light"]) {
+  .sds-banner:not(.sds-banner-high, .sds-banner-warning, .sds-banner-error) {
+    background: var(--bg-surface-base);
+  }
+}
+.sds-banner-info {
+  --banner-status: var(--text-status-info);
+}
+.sds-banner-success {
+  --banner-status: var(--text-status-success);
+}
+.sds-banner-warning {
+  --banner-status: var(--text-status-warning);
+  --bg-callout-surface: var(--bg-callout-warning);
+  --bg-callout-surface-high: var(--bg-callout-warning-high);
+  --bg-callout-action-hover: var(--bg-callout-warning-action-hover);
+  --bg-callout-action-pressed: var(--bg-callout-warning-action-pressed);
+}
+.sds-banner-error {
+  --banner-status: var(--text-status-error);
+  --bg-callout-surface: var(--bg-callout-error);
+  --bg-callout-surface-high: var(--bg-callout-error-high);
+  --bg-callout-action-hover: var(--bg-callout-error-action-hover);
+  --bg-callout-action-pressed: var(--bg-callout-error-action-pressed);
+}
+.sds-banner-high {
+  background: var(--bg-callout-surface-high);
+}
+.sds-banner-neutral.sds-banner-high {
+  background: color-mix(in oklab, var(--banner-status) 8%, var(--surface-3));
+}
+.sds-banner-body {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.25rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+.sds-banner-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 1lh;
+  color: var(--banner-status);
+}
+.sds-banner-content {
+  overflow-wrap: anywhere;
+}
+.sds-banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 16rem;
+  grid-column: 2;
+  grid-row: 1;
+  margin-left: 0.75rem;
+}
+.sds-banner-dismiss {
+  grid-column: 3;
+  grid-row: 1;
+  align-self: start;
+  margin-left: 0.5rem;
+}
+
+/* Only the textarea is masked; shallow fades keep the caret and edge line legible. */
+[data-composer-overflow] {
+  --composer-fade-top: 1;
+  --composer-fade-bottom: 1;
+  mask-image: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / var(--composer-fade-top)),
+    black 8px,
+    black calc(100% - 8px),
+    rgb(0 0 0 / var(--composer-fade-bottom))
+  );
+}
+[data-composer-overflow~="top"] {
+  --composer-fade-top: 0.6;
+}
+[data-composer-overflow~="bottom"] {
+  --composer-fade-bottom: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-ghost-fill] {
+    transition-duration: 0s !important;
+  }
+}
+
+[data-ghost-fill="link"]:not(:disabled):is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Semantic tags keep their bright ramp fills and dark text in both themes. */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  --bg-tag-success: var(--nova-mint-300);
+  --bg-tag-warning: var(--lumen-yellow-300);
+  --bg-tag-error: var(--solar-coral-400);
+  --bg-tag-info: var(--orbit-blue-400);
+  --text-tag-solid: var(--black);
+}
+
+/* Neutral labels borrow their parent's interaction shade as a passive fill. */
+.sds-tag-neutral {
+  background-color: var(--bg-context-hover, var(--surface-hover));
+}
+@scope ([data-theme="dark"]) to ([data-theme="light"]) {
+  .sds-tag-neutral {
+    background-color: var(--surface-hover);
+  }
+}
+
+/* Preserve the existing passive context inside dark portalled menus. */
+@scope ([data-theme="dark"]) to ([data-theme="light"]) {
+  [data-menu-surface] {
+    --bg-context-hover: var(--surface-hover);
+    --bg-context-selected: var(--surface-hover);
+    --bg-context-pressed: var(--surface-pressed);
+  }
+}
+
+/* Ghost actions have their own contrast roles. Neutral tags and banners retain
+   the softer --bg-context-* mapping above. Theme boundaries reset every role. */
+:root,
+[data-theme="light"] {
+  --bg-ghost-neutral-hover: var(--space-white-200);
+  --bg-ghost-neutral-pressed: var(--space-white-300);
+  --text-ghost-neutral: var(--space-white-600);
+  --text-ghost-neutral-active: var(--space-white-600);
+  --text-ghost-primary: var(--orbit-blue-600);
+  --text-ghost-primary-active: var(--orbit-blue-600);
+}
+[data-theme="dark"] {
+  --bg-ghost-neutral-hover: var(--space-white-700);
+  --bg-ghost-neutral-pressed: var(--space-white-600);
+  --text-ghost-neutral: var(--space-white-300);
+  --text-ghost-neutral-active: var(--space-white-50);
+  --text-ghost-primary: var(--orbit-blue-300);
+  --text-ghost-primary-active: var(--orbit-blue-50);
+}
+@scope ([data-theme="dark"]) to ([data-theme="light"]) {
+  :is(
+    [data-menu-surface],
+    [class~="bg-(--bg-surface-overlay)"],
+    [class~="bg-(--bg-surface-popover)"],
+    [class~="bg-(--bg-surface-tertiary)"]
+  ) {
+    --bg-ghost-neutral-hover: var(--space-white-600);
+    --bg-ghost-neutral-pressed: var(--space-white-500);
+  }
+  /* A lower surface nested inside a raised panel establishes its own context. */
+  :is(
+    [class~="bg-(--bg-surface-base)"],
+    [class~="bg-(--bg-surface-paper)"],
+    [class~="bg-(--bg-surface-primary)"],
+    [class~="bg-(--bg-surface-secondary)"],
+    [class~="bg-(--bg-surface-subtle)"],
+    [class~="bg-(--bg-chat-conversation)"],
+    [class~="bg-(--bg-artifact-header)"],
+    [class~="bg-(--bg-artifact-address)"],
+    [class~="bg-(--bg-sidebar)"],
+    [class~="bg-(--bg-input-default)"]
+  ) {
+    --bg-ghost-neutral-hover: var(--space-white-700);
+    --bg-ghost-neutral-pressed: var(--space-white-600);
+  }
+}
+
+[data-ghost-fill] {
+  --ghost-hover: var(--bg-ghost-neutral-hover);
+  --ghost-pressed: var(--bg-ghost-neutral-pressed);
+  --ghost-text: var(--text-ghost-neutral);
+  --ghost-text-active: var(--text-ghost-neutral-active);
+  background-color: transparent !important;
+  transition: background-color 0.33s ease-out;
+}
+[data-ghost-variant="primary"] {
+  --ghost-text: var(--text-ghost-primary);
+  --ghost-text-active: var(--text-ghost-primary-active);
+}
+[data-ghost-variant="success"] {
+  --ghost-hover: var(--bg-ghost-success-hover);
+  --ghost-pressed: var(--bg-ghost-success-pressed);
+  --ghost-text: var(--text-interactive-success);
+  --ghost-text-active: var(--text-interactive-success);
+}
+[data-ghost-variant="destructive"] {
+  --ghost-hover: var(--bg-ghost-error-hover);
+  --ghost-pressed: var(--bg-ghost-error-pressed);
+  --ghost-text: var(--text-interactive-error);
+  --ghost-text-active: var(--text-interactive-error);
+}
+/* Foreground ownership includes local muted toolbar overrides, and all render
+   paths. Disabled controls keep their existing exempt presentation. */
+[data-ghost-fill]:not(:disabled, [aria-disabled="true"]) {
+  color: var(--ghost-text) !important;
+}
+[data-ghost-fill]:not(:disabled, [aria-disabled="true"]):is(
+    :hover,
+    :focus-visible,
+    :active,
+    [aria-pressed="true"],
+    [data-state="on"],
+    [aria-current="page"]
+  ) {
+  color: var(--ghost-text-active) !important;
+}
+[data-ghost-fill="shaded"]:not(:disabled, [aria-disabled="true"]):is(
+    :hover,
+    :focus-visible,
+    [aria-pressed="true"],
+    [data-state="on"],
+    [aria-current="page"]
+  ) {
+  background-color: var(--ghost-hover) !important;
+}
+[data-ghost-fill="shaded"]:not(:disabled, [aria-disabled="true"]):active {
+  background-color: var(--ghost-pressed) !important;
+  transition-duration: 0.08s;
+}
+/* App-owned callout roles reset at theme boundaries. */
+:root,
+[data-theme="light"] {
+  --bg-callout-error: var(--solar-coral-200);
+  --bg-callout-error-high: color-mix(
+    in oklab,
+    var(--solar-coral-200) 50%,
+    var(--solar-coral-300)
+  );
+  --bg-callout-error-action-hover: var(--solar-coral-300);
+  --bg-callout-error-action-pressed: var(--solar-coral-400);
+  --bg-callout-warning: var(--lumen-yellow-200);
+  --bg-callout-warning-high: color-mix(
+    in oklab,
+    var(--lumen-yellow-200) 50%,
+    var(--lumen-yellow-300)
+  );
+  --bg-callout-warning-action-hover: var(--lumen-yellow-300);
+  --bg-callout-warning-action-pressed: var(--lumen-yellow-400);
+  --text-callout-action: var(--space-white-950);
+}
+[data-theme="dark"] {
+  --bg-callout-error: var(--solar-coral-800);
+  --bg-callout-error-high: var(--solar-coral-700);
+  --bg-callout-error-action-hover: var(--solar-coral-900);
+  --bg-callout-error-action-pressed: var(--solar-coral-950);
+  --bg-callout-warning: var(--lumen-yellow-800);
+  --bg-callout-warning-high: var(--lumen-yellow-700);
+  --bg-callout-warning-action-hover: var(--lumen-yellow-900);
+  --bg-callout-warning-action-pressed: var(--lumen-yellow-950);
+  --text-callout-action: var(--space-white-50);
+}
+/* Own variables on the actual button so generic ghost roles cannot reset them.
+   Existing !important ghost fills also beat Motion's inline background. */
+.sds-banner [data-ghost-fill] {
+  --ghost-hover: var(--bg-callout-action-hover);
+  --ghost-pressed: var(--bg-callout-action-pressed);
+  --ghost-text: var(--text-callout-action);
+  --ghost-text-active: var(--text-callout-action);
+}
+
+/* Rows own their travelling and persistent fills. Plain/link children remain
+   transparent. */
+[data-sidebar-row],
+[data-project-view-tab] {
+  color: var(--text-ghost-neutral) !important;
+}
+[data-sidebar-row]:is(:hover, :focus-within, :active, [data-selected="true"]),
+[data-project-view-tab]:is(
+  :hover,
+  :focus-visible,
+  :active,
+  [aria-current="page"]
+) {
+  color: var(--text-ghost-neutral-active) !important;
+}
+[data-sidebar-hover-highlight]:not([data-sidebar-hover-tone="error"]) {
+  background-color: var(--bg-ghost-neutral-hover);
+}
+[data-sidebar-hover-highlight][data-sidebar-hover-tone="error"] {
+  background-color: var(--bg-ghost-error-hover);
+}
+[data-sidebar-row][data-sidebar-hover-tone="error"] {
+  color: var(--text-interactive-error) !important;
+}
+[data-sidebar-row][data-selected="true"],
+[data-project-view-tab][aria-current="page"] {
+  background-color: var(--bg-ghost-neutral-hover);
+}
+[data-sidebar-row]:not([data-sidebar-hover-tone="error"]):has(
+    [data-ghost-fill]:not([data-sidebar-action]):active
+  ),
+[data-menu-row]:not([data-disabled]):active,
+[data-project-view-tab]:not([data-ghost-fill]):active {
+  background-color: var(--bg-ghost-neutral-pressed);
+}
+[data-menu-row][data-sidebar-hover-tone="error"]:not([data-disabled]):active {
+  background-color: var(--bg-ghost-error-pressed);
+}
+/* Sidebar delete actions keep their neutral rest and semantic active tone. */
+[data-sidebar-action][data-sidebar-action-tone="error"] {
+  --ghost-text-active: var(--text-interactive-error);
+}
+/* Nested project actions are the exception to plain row-owned fills. Their own
+   deeper shade and foreground stay distinct inside the highlighted row. */
+@scope (:root:not([data-theme="dark"]), [data-theme="light"]) to ([data-theme="dark"]) {
+  [data-sidebar-action] {
+    --ghost-hover: var(--space-white-300);
+    --ghost-pressed: var(--space-white-400);
+    --ghost-text: var(--space-white-950);
+    --ghost-text-active: var(--space-white-950);
+  }
+  [data-sidebar-action][data-sidebar-action-tone="error"] {
+    --ghost-text-active: var(--solar-coral-800);
+  }
+  [data-sidebar-action][data-ghost-variant="destructive"] {
+    --ghost-text: var(--solar-coral-800);
+    --ghost-text-active: var(--solar-coral-800);
+  }
+}
+[data-sidebar-action]:not(:disabled):is(:hover, :focus-visible) {
+  background-color: var(--ghost-hover) !important;
+}
+[data-sidebar-action]:not(:disabled):active {
+  background-color: var(--ghost-pressed) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-ghost-fill] {
+    transition-duration: 0s !important;
+  }
+}
+/* Focus uses the existing interaction fills without a perimeter, including in
+   forced colors. HeroUI can paint its ring on a focused group's descendants.
+   Clear only Tailwind's ring layers so surface and shadow-border depth survive. */
+:is(
+  :focus,
+  :focus-visible,
+  :focus-within,
+  [data-focus-visible]:not([data-focus-visible="false"]),
+  [data-focus-visible]:not([data-focus-visible="false"]) *
+) {
+  outline: none !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  --tw-inset-ring-shadow: 0 0 #0000 !important;
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "delete-confirmation-modal",
+  "title": "DeleteConfirmationModal",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/DeleteConfirmationModal.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport {\n  Button,\n  Modal,\n  ModalDescription,\n  ModalFooter,\n  ModalHeader,\n  ModalTitle,\n} from \"#/components/ds/ui\";\n\nexport interface DeleteConfirmationModalProps {\n  open: boolean;\n  onClose: () => void;\n  onConfirm: () => void;\n  isConfirming: boolean;\n  /** e.g. `Delete ${name}?` */\n  title: string;\n  /** Consequences of the delete, caller-composed. */\n  description: ReactNode;\n  /** Inline failure, kept open so the user can retry — mirrors `ExploreSolutionsModal`. */\n  errorMessage: string | null;\n  /** Defaults to \"Delete\" — override for callers whose action reads better under a different verb (e.g. \"Discard\"). */\n  confirmLabel?: string;\n  /** Defaults to \"Deleting...\" — shown on the confirm button while `isConfirming`. */\n  confirmingLabel?: string;\n  returnFocusFallback?: () => HTMLElement | null;\n}\n\n/**\n * Generic destructive confirmation modal, composed by both the sidebar's\n * project-delete flow and a solution page's own delete flow — each supplies\n * its own title/description copy. Built on the generic `Modal` primitives,\n * same shape as `ExploreSolutionsModal` but with a destructive confirm\n * button instead of a success one.\n */\nexport function DeleteConfirmationModal({\n  open,\n  onClose,\n  onConfirm,\n  isConfirming,\n  title,\n  description,\n  errorMessage,\n  confirmLabel = \"Delete\",\n  confirmingLabel = \"Deleting...\",\n  returnFocusFallback,\n}: DeleteConfirmationModalProps) {\n  return (\n    <Modal\n      open={open}\n      onClose={onClose}\n      returnFocusFallback={returnFocusFallback}\n    >\n      <ModalHeader>\n        <ModalTitle>{title}</ModalTitle>\n        <ModalDescription>{description}</ModalDescription>\n      </ModalHeader>\n\n      {errorMessage && (\n        <p\n          role=\"alert\"\n          className=\"px-1 text-body font-semibold text-(--text-status-error)\"\n        >\n          {errorMessage}\n        </p>\n      )}\n\n      <ModalFooter>\n        <Button\n          variant=\"secondary\"\n          surface=\"shadow\"\n          onClick={onClose}\n          disabled={isConfirming}\n        >\n          Cancel\n        </Button>\n        <Button\n          variant=\"destructive\"\n          onClick={onConfirm}\n          disabled={isConfirming}\n        >\n          {isConfirming ? confirmingLabel : confirmLabel}\n        </Button>\n      </ModalFooter>\n    </Modal>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/DeleteConfirmationModal.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

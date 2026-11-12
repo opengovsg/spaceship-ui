@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-weight",
+  "title": "icon-weight",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ui/icon-weight.ts",
+      "content": "import { cva } from \"class-variance-authority\";\n\n/** Set text and Lucide weight together. Use this instead of a font-only class\n * when a label has an icon. Descendant controls can set their own pairing. */\nexport const ICON_TEXT_WEIGHT_CLASSES = {\n  regular:\n    \"[font-weight:var(--font-weight-regular)] [--icon-stroke-width:var(--icon-stroke-regular)]\",\n  medium:\n    \"[font-weight:var(--font-weight-medium)] [--icon-stroke-width:var(--icon-stroke-medium)]\",\n  semibold:\n    \"[font-weight:var(--font-weight-semibold)] [--icon-stroke-width:var(--icon-stroke-semibold)]\",\n  bold: \"[font-weight:var(--font-weight-bold)] [--icon-stroke-width:var(--icon-stroke-bold)]\",\n} as const;\n\nexport const ICON_WEIGHT_CLASS =\n  \"[&_.lucide]:[stroke-width:var(--icon-stroke-width)]\";\n\nexport const iconTextWeightVariants = cva([ICON_WEIGHT_CLASS], {\n  variants: { weight: ICON_TEXT_WEIGHT_CLASSES },\n  defaultVariants: { weight: \"regular\" },\n});\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/icon-weight.ts"
+    }
+  ],
+  "type": "registry:lib"
+}

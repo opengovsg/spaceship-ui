@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "patterns-index",
+  "title": "index",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/answer-recap.json",
+    "https://spaceship-ui.vercel.app/r/artifact-content-renderer.json",
+    "https://spaceship-ui.vercel.app/r/artifact-panel.json",
+    "https://spaceship-ui.vercel.app/r/artifact-segmented-control.json",
+    "https://spaceship-ui.vercel.app/r/artifact-types.json",
+    "https://spaceship-ui.vercel.app/r/chat-panel-header.json",
+    "https://spaceship-ui.vercel.app/r/chat-panel.json",
+    "https://spaceship-ui.vercel.app/r/chat-user-message.json",
+    "https://spaceship-ui.vercel.app/r/clarification-form.json",
+    "https://spaceship-ui.vercel.app/r/delete-confirmation-modal.json",
+    "https://spaceship-ui.vercel.app/r/dotted-background.json",
+    "https://spaceship-ui.vercel.app/r/editable-title.json",
+    "https://spaceship-ui.vercel.app/r/page-frame.json",
+    "https://spaceship-ui.vercel.app/r/preview-link.json",
+    "https://spaceship-ui.vercel.app/r/preview-panel-header.json",
+    "https://spaceship-ui.vercel.app/r/preview-panel.json",
+    "https://spaceship-ui.vercel.app/r/problem-statement-prose.json",
+    "https://spaceship-ui.vercel.app/r/prototype-url-bar.json",
+    "https://spaceship-ui.vercel.app/r/rename-project-title.json",
+    "https://spaceship-ui.vercel.app/r/rubric-checklist.json",
+    "https://spaceship-ui.vercel.app/r/shareable-link.json",
+    "https://spaceship-ui.vercel.app/r/sidebar.json",
+    "https://spaceship-ui.vercel.app/r/testing-nav.json",
+    "https://spaceship-ui.vercel.app/r/two-column-layout.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/index.ts",
+      "content": "export { DottedBackground } from \"./DottedBackground\";\nexport * from \"./PageFrame\";\nexport { PreviewPanel } from \"./PreviewPanel\";\nexport * from \"./Sidebar\";\nexport { PreviewPanelHeader } from \"./PreviewPanelHeader\";\nexport { EditableTitle } from \"./EditableTitle\";\nexport { RenameProjectTitle } from \"./RenameProjectTitle\";\nexport { ShareableLink } from \"./ShareableLink\";\nexport { PrototypeUrlBar } from \"./PrototypeUrlBar\";\nexport type { PrototypeUrlBarProps } from \"./PrototypeUrlBar\";\nexport { ArtifactSegmentedControl } from \"./ArtifactSegmentedControl\";\nexport { ArtifactContentRenderer } from \"./ArtifactContentRenderer\";\nexport { TwoColumnLayout } from \"./TwoColumnLayout\";\nexport type { TwoColumnLayoutProps } from \"./TwoColumnLayout\";\nexport { ArtifactPanel } from \"./ArtifactPanel\";\nexport type { ArtifactPanelProps } from \"./ArtifactPanel\";\nexport { ProblemStatementProse } from \"./ProblemStatementProse\";\nexport type { ProblemStatementProseProps } from \"./ProblemStatementProse\";\nexport { AnswerRecap } from \"./AnswerRecap\";\nexport type { AnswerRecapProps, AnswerRecapEntry } from \"./AnswerRecap\";\nexport { ChatUserMessage } from \"./ChatUserMessage\";\nexport type { ChatUserMessageProps } from \"./ChatUserMessage\";\nexport { TestingNav } from \"./TestingNav\";\nexport type {\n  TestingNavProps,\n  TestingNavItem,\n  TestingNavSection,\n} from \"./TestingNav\";\nexport { RubricChecklist } from \"./RubricChecklist\";\nexport type {\n  RubricChecklistProps,\n  RubricChecklistItem,\n  RubricChecklistSection,\n  RubricVerdict,\n} from \"./RubricChecklist\";\nexport { ChatPanel, CHAT_MIN_WIDTH_PX } from \"./ChatPanel\";\nexport { ChatPanelHeader } from \"./ChatPanelHeader\";\nexport type { ChatPanelHeaderProps } from \"./ChatPanelHeader\";\nexport { DeleteConfirmationModal } from \"./DeleteConfirmationModal\";\nexport type { DeleteConfirmationModalProps } from \"./DeleteConfirmationModal\";\nexport { PreviewLink } from \"./PreviewLink\";\nexport type {\n  Artifact,\n  ArtifactType,\n  ArtifactStatus,\n  ArtifactNavigationProps,\n} from \"./artifact-types\";\nexport {\n  ARTIFACT_TYPE_LABEL,\n  ARTIFACT_STATUS_VARIANT,\n  ARTIFACT_STATUS_LABEL,\n} from \"./artifact-types\";\nexport type {\n  SingleSelectQuestion,\n  MultiSelectQuestion,\n  RankPrioritiesQuestion,\n  Question,\n  Stage,\n  StageAnswers,\n} from \"./ClarificationForm\";\nexport {\n  STAGES,\n  PILL_BASE,\n  PILL_SELECTED,\n  PILL_UNSELECTED,\n  isStageComplete,\n  buildAnswerSummary,\n  buildClosingMessage,\n  SingleSelect,\n  MultiSelect,\n  RankPriorities,\n} from \"./ClarificationForm\";\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/index.ts"
+    }
+  ],
+  "type": "registry:lib"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "format-guided-answers",
+  "title": "format-guided-answers",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/lib/format-guided-answers.ts",
+      "content": "/**\n * Formats a single question/answer pair into the block format the agent\n * prompt expects when guided questions are answered.\n */\nexport function formatQABlock(question: string, answer: string): string {\n  return `**Q: ${question}**\\n\\nA: ${answer}`;\n}\n\n/**\n * Joins formatted Q/A blocks into the single message sent to the agent once\n * all guided questions have been answered.\n */\nexport function joinQABlocks(blocks: string[]): string {\n  return blocks.join(\"\\n\\n\\n\");\n}\n\nexport interface QABlock {\n  question: string;\n  answer: string;\n}\n\nconst QA_BLOCK_RE = /^\\*{0,2}Q:\\s*([\\s\\S]*?)\\*{0,2}\\s*\\n+\\s*A:\\s*([\\s\\S]*)$/;\n\n/**\n * Inverse of {@link formatQABlock}/{@link joinQABlocks} — splits a chat\n * message back into its question/answer pairs, for rendering a guided-intake\n * turn as a recap instead of raw markdown. Returns `null` if any block\n * doesn't match the `Q: ...` / `A: ...` shape (e.g. a free-form message).\n */\nexport function parseQABlocks(content: string): QABlock[] | null {\n  const blocks = content.split(\"\\n\\n\\n\").map((block) => {\n    const match = QA_BLOCK_RE.exec(block.trim());\n    if (!match) return null;\n    return { question: match[1]!.trim(), answer: match[2]!.trim() };\n  });\n  return blocks.every((block): block is QABlock => block !== null)\n    ? blocks\n    : null;\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/lib/format-guided-answers.ts"
+    }
+  ],
+  "type": "registry:lib"
+}

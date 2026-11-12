@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "answer-recap",
+  "title": "AnswerRecap",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/AnswerRecap.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nexport interface AnswerRecapEntry {\n  question: string;\n  /**\n   * Plain text for a simple Q&A recap. Pass a formatted node (e.g.\n   * `ProblemStatementProse`) for an answer that needs its own rendering\n   * (mad-lib leads, etc.) instead of plain prose.\n   */\n  answer: ReactNode;\n}\n\nexport interface AnswerRecapProps {\n  entries: AnswerRecapEntry[];\n  className?: string;\n}\n\n/**\n * An in-thread summary of what the officer has already told the crafter. It sits\n * in the chat history so earlier answers stay visible once the question card has\n * moved on, and so the artifact panel's prose can be traced back to them.\n */\nexport function AnswerRecap({ entries, className }: AnswerRecapProps) {\n  if (entries.length === 0) return null;\n\n  return (\n    <div\n      className={cn(\n        \"ml-auto flex w-fit min-w-0 max-w-[80%] flex-col gap-6 self-end rounded-(--radius-inner) px-4 py-3 [overflow-wrap:anywhere]\",\n        \"bg-(--bg-chat-user)\",\n        className,\n      )}\n    >\n      {entries.map((entry) => (\n        <div\n          key={entry.question}\n          className=\"flex w-full min-w-0 flex-col gap-2\"\n        >\n          <p className=\"w-full min-w-0 whitespace-pre-wrap [overflow-wrap:anywhere] text-body text-(--text-secondary)\">\n            {entry.question}\n          </p>\n          <div className=\"w-full min-w-0 whitespace-pre-wrap [overflow-wrap:anywhere] text-body text-(--text-primary)\">\n            {entry.answer}\n          </div>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/AnswerRecap.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

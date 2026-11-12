@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-fade",
+  "title": "scroll-fade",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/scroll-fade.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode, useLayoutEffect, useRef, useState } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nexport const scrollFadeVariants = cva(\n  [\n    \"relative flex min-h-0 flex-col overflow-hidden\",\n    \"[--scroll-fade-surface:var(--bg-surface-base)]\",\n  ],\n  {\n    variants: {\n      surface: { default: \"\", \"shadow-border\": \"shadow-(--shadow-border)\" },\n    },\n    defaultVariants: { surface: \"default\" },\n  },\n);\n\nexport interface ScrollFadeProps extends VariantProps<\n  typeof scrollFadeVariants\n> {\n  children?: ReactNode;\n  className?: string;\n  viewportClassName?: string;\n  contentClassName?: string;\n  \"aria-label\"?: string;\n}\n\n/** Fade only an edge that has more content to scroll, on any background. */\nexport function ScrollFade({\n  children,\n  surface,\n  className,\n  viewportClassName,\n  contentClassName,\n  \"aria-label\": label,\n}: ScrollFadeProps) {\n  const viewportRef = useRef<HTMLDivElement>(null);\n  const contentRef = useRef<HTMLDivElement>(null);\n  const [edges, setEdges] = useState({ top: false, bottom: false });\n\n  useLayoutEffect(() => {\n    const viewport = viewportRef.current;\n    const content = contentRef.current;\n    if (!viewport || !content) return undefined;\n    const update = () => {\n      const overflow = viewport.scrollHeight - viewport.clientHeight;\n      const top = overflow > 1 && viewport.scrollTop > 1;\n      const bottom = overflow > 1 && overflow - viewport.scrollTop > 1;\n      setEdges((previous) =>\n        previous.top === top && previous.bottom === bottom\n          ? previous\n          : { top, bottom },\n      );\n    };\n    update();\n    viewport.addEventListener(\"scroll\", update, { passive: true });\n    window.addEventListener(\"resize\", update);\n    const observer =\n      typeof ResizeObserver === \"undefined\"\n        ? undefined\n        : new ResizeObserver(update);\n    observer?.observe(viewport);\n    observer?.observe(content);\n    return () => {\n      observer?.disconnect();\n      viewport.removeEventListener(\"scroll\", update);\n      window.removeEventListener(\"resize\", update);\n    };\n  }, [children]);\n\n  return (\n    <div className={cn(scrollFadeVariants({ surface }), className)}>\n      <div\n        ref={viewportRef}\n        aria-label={label}\n        style={{\n          maskImage:\n            edges.top || edges.bottom\n              ? `linear-gradient(to bottom, ${edges.top ? \"transparent, black 16px\" : \"black 0\"}, ${edges.bottom ? \"black calc(100% - 16px), transparent\" : \"black 100%\"})`\n              : undefined,\n        }}\n        className={cn(\n          \"min-h-0 flex-1 overflow-y-auto scroll-py-4 [scrollbar-color:var(--text-tertiary)_transparent]\",\n          viewportClassName,\n        )}\n      >\n        <div ref={contentRef} className={cn(contentClassName)}>\n          {children}\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/scroll-fade.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

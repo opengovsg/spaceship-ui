@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rubric-checklist",
+  "title": "RubricChecklist",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/RubricChecklist.tsx",
+      "content": "\"use client\";\n\nimport { Check, Minus, X } from \"lucide-react\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\n/**\n * Structurally identical to the app's `CriterionVerdict`, declared here rather\n * than imported: `ds/` must not depend on app state, and structural typing\n * means the app's values still assign cleanly.\n */\nexport type RubricVerdict = \"unevaluated\" | \"fail\" | \"pass\";\n\nexport interface RubricChecklistItem {\n  text: string;\n  verdict: RubricVerdict;\n}\n\nexport interface RubricChecklistSection {\n  /** Rendered in Sora + sentence case, e.g. `CLARITY`. */\n  label: string;\n  items: RubricChecklistItem[];\n}\n\nexport interface RubricChecklistProps {\n  sections: RubricChecklistSection[];\n  className?: string;\n}\n\nconst VERDICT_ICON: Record<RubricVerdict, typeof Check> = {\n  unevaluated: Minus,\n  pass: Check,\n  fail: X,\n};\n\nconst VERDICT_TEXT_COLOR: Record<RubricVerdict, string> = {\n  // Muted until judged, so an unanswered criterion reads as \"not yet\" rather\n  // than as a failure.\n  unevaluated:\n    \"text-(--text-tertiary) [font-weight:var(--font-weight-regular)]\",\n  pass: \"text-(--text-interactive-success) [font-weight:var(--font-weight-semibold)]\",\n  fail: \"text-(--text-interactive-error) [font-weight:var(--font-weight-semibold)]\",\n};\n\nconst VERDICT_LABEL: Record<RubricVerdict, string> = {\n  unevaluated: \"Not yet evaluated\",\n  pass: \"Met\",\n  fail: \"Not met\",\n};\n\n/** The circular per-item badge — solid fill for a judged verdict, an outlined dash while unevaluated. */\nfunction VerdictBadge({ verdict }: { verdict: RubricVerdict }) {\n  const Icon = VERDICT_ICON[verdict];\n  if (verdict === \"unevaluated\") {\n    return (\n      <span className=\"flex size-5 shrink-0 items-center justify-center rounded-full border border-(--border-default) bg-(--bg-status-neutral)\">\n        <Icon aria-hidden className=\"size-2.5 text-(--text-tertiary)\" />\n      </span>\n    );\n  }\n  return (\n    <span\n      className={cn(\n        \"flex size-5 shrink-0 items-center justify-center rounded-full\",\n        verdict === \"pass\"\n          ? \"bg-(--bg-status-default-success)\"\n          : \"bg-(--bg-status-default-error)\",\n      )}\n    >\n      <Icon aria-hidden className=\"size-3 text-(--text-inverse)\" />\n    </span>\n  );\n}\n\nexport function RubricChecklist({ sections, className }: RubricChecklistProps) {\n  return (\n    <div className={cn(\"flex flex-col gap-6\", className)}>\n      {sections.map((section) => (\n        <div key={section.label} className=\"flex flex-col gap-3\">\n          <div className=\"flex flex-col gap-2\">\n            <h3 className=\"font-sans normal-case text-caption [font-weight:var(--font-weight-semibold)] text-(--text-tertiary)\">\n              {section.label}\n            </h3>\n            <div className=\"h-px w-full bg-(--border-subtle)\" />\n          </div>\n          <ul className=\"flex flex-col gap-4\">\n            {section.items.map((item) => (\n              <li key={item.text} className=\"flex items-center gap-3\">\n                <VerdictBadge verdict={item.verdict} />\n                <span className=\"sr-only\">{VERDICT_LABEL[item.verdict]}: </span>\n                <span\n                  className={cn(\"text-body\", VERDICT_TEXT_COLOR[item.verdict])}\n                >\n                  {item.text}\n                </span>\n              </li>\n            ))}\n          </ul>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/RubricChecklist.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

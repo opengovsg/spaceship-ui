@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "title": "Tabs",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/tab-bar.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/Tabs.tsx",
+      "content": "import { TabBar, TabBarItem } from \"./tab-bar\";\n\nexport interface TabItem<T extends string = string> {\n  key: T;\n  label: string;\n  hidden?: boolean;\n}\ninterface TabsProps<T extends string = string> {\n  tabs: TabItem<T>[];\n  activeTab: T;\n  onTabChange: (key: T) => void;\n  className?: string;\n}\n\n/** Data-driven composition of the canonical keyboard-accessible tab bar. */\nexport function Tabs<T extends string = string>({\n  tabs,\n  activeTab,\n  onTabChange,\n  className,\n}: TabsProps<T>) {\n  return (\n    <TabBar\n      value={activeTab}\n      onChange={(value) => onTabChange(value as T)}\n      className={className}\n    >\n      {tabs\n        .filter((tab) => !tab.hidden)\n        .map((tab) => (\n          <TabBarItem key={tab.key} value={tab.key}>\n            {tab.label}\n          </TabBarItem>\n        ))}\n    </TabBar>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/Tabs.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

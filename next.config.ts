@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
@@ -9,6 +8,12 @@ const nextConfig: NextConfig = {
       "*.css": {
         loaders: ["@tailwindcss/turbopack"],
         as: "*.css",
+      },
+      // Registry files import icons the Vite way (`icon.svg?react`), same as the app.
+      "*.svg": {
+        condition: { query: "?react" },
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
       },
     },
   },

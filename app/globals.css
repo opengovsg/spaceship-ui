@@ -1,26 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
+/* Spaceship tokens, in the same order as the app's src/tailwind.css. */
+@import "../registry/tokens/typography.css";
+@import "../registry/tokens/tokens.css";
+@import "../registry/tokens/surfaces.css";
+@import "../registry/tokens/theme.css";
+@plugin "@tailwindcss/typography";
+/* Let Tailwind see class names used inside the registry files. */
+@source "../registry";
 
+/* Fonts and icon strokes. These live in the app's src/index.css, not in the
+   registry, so they are mirrored here for the docs site. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-family-secondary: "Sora", system-ui, sans-serif;
+  --font-family-primary: "Syne", "Sora", system-ui, sans-serif;
+  --font-family-mono: "Space Mono", ui-monospace, monospace;
+  --icon-stroke-regular: 1.5;
+  --icon-stroke-medium: 2;
+  --icon-stroke-semibold: 2.5;
+  --icon-stroke-bold: 3;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Docs chrome only. Keep it plain so the components are what you look at. */
+.docs-body { margin: 0; font-family: system-ui, sans-serif; color: #18181b; background: #fff; }
+.docs-header { padding: 16px 24px; border-bottom: 1px solid #e4e4e7; }
+.docs-brand { font-weight: 600; text-decoration: none; color: inherit; }
+.docs-main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
+.docs-main h1 { font-size: 28px; margin: 0 0 8px; }
+.docs-main h2 { font-size: 16px; margin: 32px 0 12px; color: #52525b; }
+.docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+.docs-card { display: block; padding: 12px 14px; border: 1px solid #e4e4e7; border-radius: 8px; text-decoration: none; color: inherit; }
+.docs-card:hover { border-color: #a1a1aa; }
+.docs-muted { color: #71717a; font-size: 13px; }
+.docs-preview { min-height: 160px; padding: 32px; border: 1px solid #e4e4e7; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.docs-code { overflow-x: auto; padding: 16px; border-radius: 8px; background: #f4f4f5; font-size: 13px; line-height: 1.5; }

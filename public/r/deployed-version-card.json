@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deployed-version-card",
+  "title": "deployed-version-card",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/relative-date.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/deployed-version-card.tsx",
+      "content": "\"use client\";\n\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport type { ReactNode } from \"react\";\nimport { Globe, LoaderCircle, CircleAlert } from \"lucide-react\";\nimport { RelativeDate } from \"#/components/ds/ui/relative-date\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nexport const deployedVersionCardVariants = cva(\n  [\n    \"flex min-w-0 w-full items-center gap-2 rounded-(--radius-inner) border border-(--border-subtle) p-3\",\n    \"bg-(--bg-surface-primary)\",\n  ],\n  {\n    variants: {\n      surface: {\n        default: \"\",\n        \"shadow-border\": \"\",\n      },\n    },\n    defaultVariants: { surface: \"shadow-border\" },\n  },\n);\n\nexport interface DeployedVersionCardProps extends VariantProps<\n  typeof deployedVersionCardVariants\n> {\n  versionNumber: number;\n  timestamp: string;\n  isLatest?: boolean;\n  disableMotion?: boolean;\n  className?: string;\n  status?: \"IN_PROGRESS\" | \"SUCCESS\" | \"FAILED\";\n  children?: ReactNode;\n}\n\n/** A compact, single-line published-version row. */\nexport function DeployedVersionCard({\n  versionNumber,\n  timestamp,\n  isLatest = false,\n  surface,\n  className,\n  status,\n  children,\n}: DeployedVersionCardProps) {\n  return (\n    <div\n      className={cn(deployedVersionCardVariants({ surface }), className)}\n      data-latest={isLatest || undefined}\n    >\n      <span className=\"flex min-w-0 items-center gap-2 overflow-hidden whitespace-nowrap font-sans text-caption\">\n        {status === \"IN_PROGRESS\" ? (\n          <LoaderCircle aria-hidden className=\"size-4 shrink-0 animate-spin\" />\n        ) : status === \"FAILED\" ? (\n          <CircleAlert\n            aria-hidden\n            className=\"size-4 shrink-0 text-(--text-tertiary)\"\n          />\n        ) : (\n          <Globe\n            aria-hidden=\"true\"\n            className={cn(\n              \"h-4 w-4 shrink-0\",\n              isLatest\n                ? \"text-(--bg-interactive-success-default)\"\n                : \"text-(--text-tertiary)\",\n            )}\n          />\n        )}\n        <span className=\"shrink-0 font-semibold text-(--text-primary)\">\n          Version {versionNumber}\n        </span>\n      </span>\n      {status === \"IN_PROGRESS\" && (\n        <span role=\"status\" className=\"shrink-0 text-caption\">\n          Publishing\n        </span>\n      )}\n      {status === \"FAILED\" && (\n        <span className=\"shrink-0 text-caption\">Failed to publish</span>\n      )}\n      {children}\n      <span className=\"ml-auto min-w-0 truncate text-right font-sans text-caption text-(--text-tertiary)\">\n        {status === \"IN_PROGRESS\"\n          ? \"Started\"\n          : status === \"FAILED\"\n            ? \"Attempted\"\n            : \"Published\"}{\" \"}\n        <RelativeDate date={timestamp} forceRelativeDate />\n      </span>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/deployed-version-card.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

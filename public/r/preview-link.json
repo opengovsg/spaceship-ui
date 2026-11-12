@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-link",
+  "title": "PreviewLink",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/PreviewLink.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode } from \"react\";\nimport { RefreshCw, ExternalLink } from \"lucide-react\";\nimport { Button } from \"../ui\";\n\ninterface PreviewLinkProps {\n  title?: string;\n  onRefresh?: () => void;\n  onOpenInNewTab?: () => void;\n  children?: ReactNode;\n}\n\nexport function PreviewLink({\n  title = \"Preview\",\n  onRefresh,\n  onOpenInNewTab,\n  children,\n}: PreviewLinkProps) {\n  return (\n    <div className=\"flex flex-col overflow-clip rounded-3xl shadow-(--shadow-border) bg-(--bg-surface-base) size-full\">\n      <div className=\"bg-(--bg-surface-primary) border-b-2 border-(--bg-surface-secondary) flex shrink-0 items-center justify-between px-4 py-4\">\n        <p className=\"font-sans text-title font-semibold text-(--text-primary) whitespace-nowrap\">\n          {title}\n        </p>\n        <div className=\"flex items-center gap-3\">\n          <Button\n            variant=\"secondary\"\n            trailingIcon={<RefreshCw />}\n            onClick={onRefresh}\n          >\n            Refresh\n          </Button>\n          <Button\n            variant=\"secondary\"\n            trailingIcon={<ExternalLink />}\n            onClick={onOpenInNewTab}\n          >\n            Open in new tab\n          </Button>\n        </div>\n      </div>\n\n      <div className=\"flex flex-1 min-h-0 bg-(--bg-surface-tertiary) overflow-clip\">\n        {children}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/PreviewLink.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

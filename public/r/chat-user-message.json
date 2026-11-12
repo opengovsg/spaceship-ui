@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-user-message",
+  "title": "ChatUserMessage",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/answer-recap.json",
+    "https://spaceship-ui.vercel.app/r/format-guided-answers.json",
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/ChatUserMessage.tsx",
+      "content": "\"use client\";\n\nimport { ChatBubble, ChatMessage } from \"#/components/ds/ui\";\nimport { parseQABlocks } from \"#/components/ds/lib/format-guided-answers\";\nimport { AnswerRecap } from \"./AnswerRecap\";\n\nexport interface ChatUserMessageProps {\n  content: string;\n}\n\n/**\n * Renders one user chat turn. A guided-intake turn (the `Q: .../A: ...`\n * block format built by `formatQABlock`/`joinQABlocks`) renders as an\n * {@link AnswerRecap} instead of a bubble, so the original questions stay\n * legible once the question card has scrolled out of view. Any other\n * content renders as a normal right-aligned {@link ChatBubble}.\n */\nexport function ChatUserMessage({ content }: ChatUserMessageProps) {\n  const entries = parseQABlocks(content);\n  if (entries) {\n    return <AnswerRecap entries={entries} />;\n  }\n  return (\n    <ChatBubble>\n      <ChatMessage content={content} preserveLineBreaks />\n    </ChatBubble>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/ChatUserMessage.tsx"
+    }
+  ],
+  "type": "registry:block"
+}
