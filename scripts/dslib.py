@@ -16,6 +16,7 @@ CODE = ('.ts', '.tsx')
 SHIPPED = CODE + ('.css', '.json', '.svg', '.md')
 SKIP = ('.stories.', '.test.', '.spec.')
 SKIP_DIRS = {'__tests__', 'node_modules', 'examples'}
+SKIP_NAMES = {'AGENTS.md', 'CLAUDE.md'}  # agent instructions, never compared or shipped
 # `from "x"`, `import "x"` and `export ... from "x"`
 IMPORT = re.compile(r'''(?:from|import)\s+["']([^"']+)["']''')
 TYPES = {'ui': 'registry:ui', 'patterns': 'registry:block', 'lib': 'registry:lib', 'tokens': 'registry:style'}
@@ -24,7 +25,7 @@ TYPES = {'ui': 'registry:ui', 'patterns': 'registry:block', 'lib': 'registry:lib
 def shipped(p, root):
     rel = p.relative_to(root)
     return (p.is_file() and p.suffix in SHIPPED and not any(s in p.name for s in SKIP)
-            and not SKIP_DIRS.intersection(rel.parts))
+            and p.name not in SKIP_NAMES and not SKIP_DIRS.intersection(rel.parts))
 
 
 def files_under(root):
@@ -128,6 +129,12 @@ def cmd_registry(a):
             if name in groups:
                 sys.exit(f'Two registry items would be named "{name}". Rename one of them.')
             groups[name] = (typ, files)
+        # Side files (e.g. `animated-icons.LICENSE.md`) travel with the item they are named after.
+        for entry in sorted(top.iterdir()):
+            if entry.is_file() and shipped(entry, top) and entry.suffix not in CODE + ('.css',):
+                base = kebab(entry.name.split('.')[0])
+                if base in groups:
+                    groups[base][1].append(entry)
     # Files outside the typed folders still have to reach the app, or `check` reports them missing.
     if (reg_dir / 'icons').is_dir() and files_under(reg_dir / 'icons'):
         groups['icons'] = ('registry:file', files_under(reg_dir / 'icons'))
@@ -172,8 +179,12 @@ def cmd_registry(a):
     for i in items:
         if i['name'] not in examples and i['type'] in ('registry:ui', 'registry:block'):
             print(f"NO EXAMPLE  {i['name']}")
+    # `check` compares every shipped file, so every shipped file must be in an item.
+    missed = [p for p in files_under(reg_dir) if p not in owner]
+    for p in missed:
+        print(f'NOT SHIPPED  {p.relative_to(reg_dir)}')
     print(f'{len(items)} items written to registry.json')
-    return 0
+    return 1 if missed else 0
 
 
 def cmd_check(a):

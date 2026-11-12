@@ -19,7 +19,7 @@ Driven by the `lab-design-library` skill in `aed-design-lab` (modes: setup, add,
 | Path | What |
 |---|---|
 | `registry/ui/`, `registry/patterns/`, `registry/lib/`, `registry/tokens/`, `registry/icons/` | The components. Byte-for-byte the same as `spaceship-frontend/src/components/ds/`. |
-| `registry/AGENTS.md` | DS conventions. Ships to apps too. Follow it when editing anything in `registry/`. |
+| `registry/AGENTS.md` | DS conventions, same text as the app's `src/components/ds/AGENTS.md` (not compared by `check`, keep them aligned by hand). Follow it when editing anything in `registry/`. |
 | `registry/examples/<item>.tsx` | One small demo per ui/pattern item. Docs-only, never installed. |
 | `registry.json` | Item list in shadcn format. Generated, do not hand-edit. |
 | `public/r/*.json` | Built by `shadcn build`. Installs pull from here. |

@@ -340,7 +340,7 @@
     {
       "name": "animated-icons",
       "type": "registry:ui",
-      "title": "animated-icons",
+      "title": "Animated Icons",
       "dependencies": [
         "framer-motion"
       ],
@@ -352,6 +352,11 @@
           "path": "registry/ui/animated-icons.tsx",
           "type": "registry:file",
           "target": "src/components/ds/ui/animated-icons.tsx"
+        },
+        {
+          "path": "registry/ui/animated-icons.LICENSE.md",
+          "type": "registry:file",
+          "target": "src/components/ds/ui/animated-icons.LICENSE.md"
         }
       ]
     },
@@ -2056,25 +2061,6 @@
           "path": "registry/icons/solution-badges/solution-built.svg",
           "type": "registry:file",
           "target": "src/components/ds/icons/solution-badges/solution-built.svg"
-        }
-      ]
-    },
-    {
-      "name": "ds-root",
-      "type": "registry:file",
-      "title": "Ds Root",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/AGENTS.md",
-          "type": "registry:file",
-          "target": "src/components/ds/AGENTS.md"
-        },
-        {
-          "path": "registry/CLAUDE.md",
-          "type": "registry:file",
-          "target": "src/components/ds/CLAUDE.md"
         }
       ]
     }
