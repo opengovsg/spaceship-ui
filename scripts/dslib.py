@@ -153,7 +153,7 @@ def cmd_registry(a):
         items.append({
             'name': name,
             'type': typ,
-            'title': files[0].stem if len(files) == 1 else name.replace('-', ' ').title(),
+            'title': files[0].stem if len(files) == 1 and files[0].stem != 'index' else name.replace('-', ' ').title(),
             'dependencies': sorted(deps),
             'registryDependencies': sorted(reg_deps),
             'files': [{'path': str(f.relative_to(lib)), 'type': 'registry:file',

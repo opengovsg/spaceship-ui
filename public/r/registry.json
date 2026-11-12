@@ -825,7 +825,7 @@
     {
       "name": "ui-index",
       "type": "registry:lib",
-      "title": "index",
+      "title": "Ui Index",
       "dependencies": [],
       "registryDependencies": [
         "https://spaceship-ui.vercel.app/r/animated-icons.json",
@@ -1849,7 +1849,7 @@
     {
       "name": "patterns-index",
       "type": "registry:lib",
-      "title": "index",
+      "title": "Patterns Index",
       "dependencies": [],
       "registryDependencies": [
         "https://spaceship-ui.vercel.app/r/answer-recap.json",

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "patterns-index",
-  "title": "index",
+  "title": "Patterns Index",
   "dependencies": [],
   "registryDependencies": [
     "https://spaceship-ui.vercel.app/r/answer-recap.json",

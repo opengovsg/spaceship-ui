@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ui-index",
-  "title": "index",
+  "title": "Ui Index",
   "dependencies": [],
   "registryDependencies": [
     "https://spaceship-ui.vercel.app/r/animated-icons.json",
