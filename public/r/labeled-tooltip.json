@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "labeled-tooltip",
+  "title": "LabeledTooltip",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/tooltip.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/LabeledTooltip.tsx",
+      "content": "import { cloneElement, type ReactElement } from \"react\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"./tooltip\";\n\nexport interface LabeledTooltipProps {\n  label?: string;\n  /** Use the label as the disabled reason when it describes the current blocker. */\n  labelIsDisabledReason?: boolean;\n  children: ReactElement;\n  delay?: number;\n  direction?: \"up\" | \"down\" | \"left\" | \"right\" | \"down-right\" | \"down-left\";\n  contentClassName?: string;\n}\n\n/** Single-label composition of the shared Radix tooltip, including disabled triggers. */\nexport function LabeledTooltip({\n  label,\n  labelIsDisabledReason = false,\n  children,\n  delay = 200,\n  direction = \"up\",\n  contentClassName,\n}: LabeledTooltipProps) {\n  if (!label) return children;\n  const childProps = children.props as {\n    disabled?: boolean;\n    disabledReason?: string;\n  };\n  if (childProps.disabled && childProps.disabledReason) {\n    return labelIsDisabledReason\n      ? cloneElement(children as ReactElement<{ disabledReason?: string }>, {\n          disabledReason: label,\n        })\n      : children;\n  }\n  const needsFocusTarget = childProps.disabled;\n  const side =\n    direction === \"up\"\n      ? \"top\"\n      : direction === \"down\" ||\n          direction === \"down-right\" ||\n          direction === \"down-left\"\n        ? \"bottom\"\n        : direction;\n  const align =\n    direction === \"down-right\"\n      ? \"start\"\n      : direction === \"down-left\"\n        ? \"end\"\n        : \"center\";\n  return (\n    <TooltipProvider delayDuration={delay} disableHoverableContent>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <span\n            className={\n              contentClassName\n                ? `inline-block ${contentClassName}`\n                : \"inline-block\"\n            }\n            tabIndex={needsFocusTarget ? 0 : undefined}\n            aria-label={needsFocusTarget ? label : undefined}\n          >\n            {children}\n          </span>\n        </TooltipTrigger>\n        <TooltipContent side={side} align={align}>\n          {label}\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/LabeledTooltip.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

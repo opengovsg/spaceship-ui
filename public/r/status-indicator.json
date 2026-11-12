@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-indicator",
+  "title": "StatusIndicator",
+  "dependencies": [
+    "usehooks-ts"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/StatusIndicator.tsx",
+      "content": "import { cn } from \"#/components/ds/lib/classnames\";\nimport { useState } from \"react\";\nimport { useBoolean, useInterval } from \"usehooks-ts\";\n\ninterface StatusIndicatorProps {\n  /** The status label to show. Do not include ellipses in the label. */\n  label: string;\n\n  /** The speed (in ms) at which ellipses will be animated. */\n  ellipsesSpeed?: number;\n\n  /** The maximum number of ellipses that should be shown. */\n  maxEllipses?: number;\n\n  /** The speed (in ms) at which the label should fade in and out. */\n  pulseSpeed?: number;\n}\n\n/**\n * An animated text label that indicates a task is in progress, e.g. \"Spaceship is building...\"\n */\nexport const StatusIndicator = ({\n  label,\n  ellipsesSpeed = 500,\n  maxEllipses = 3,\n  pulseSpeed = 1500,\n}: StatusIndicatorProps) => {\n  const [ellipses, setEllipses] = useState(\".\");\n  const { value: visible, toggle } = useBoolean(false);\n\n  useInterval(() => {\n    if (ellipses.length >= maxEllipses) {\n      setEllipses(\".\");\n    } else {\n      setEllipses(ellipses + \".\");\n    }\n  }, ellipsesSpeed);\n\n  useInterval(() => {\n    toggle();\n  }, pulseSpeed);\n\n  return (\n    <span\n      className={cn(\n        \"opacity-50 transition-opacity ease-in-out\",\n        visible && \"opacity-100\",\n      )}\n      style={{ transitionDuration: `${pulseSpeed}ms` }}\n    >\n      {label}\n      {ellipses}\n    </span>\n  );\n};\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/StatusIndicator.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

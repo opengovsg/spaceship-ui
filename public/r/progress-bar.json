@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-bar",
+  "title": "ProgressBar",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/ProgressBar.tsx",
+      "content": "import { cn } from \"#/components/ds/lib/classnames\";\nimport { useEffect, useState } from \"react\";\n\ninterface ProgressBarProps {\n  /** The current progress value */\n  value?: number;\n  /** The maximum value that the progress bar can reach */\n  max?: number;\n  /** Whether to simulate automatic progress */\n  simulate?: boolean;\n  /**\n   * The average interval (in milliseconds) between simulated increments. We add some jitter to make the increments seem more natural,\n   * so the increments may actually happen slightly faster or slower than this.\n   */\n  simulationSpeed?: number;\n  /** Unique identifier for the progress bar element */\n  id?: string;\n\n  className?: string;\n}\n\nexport const ProgressBar = ({\n  value = 0,\n  max = 100,\n  simulate = false,\n  simulationSpeed = 2500,\n  id,\n  className,\n}: ProgressBarProps) => {\n  const [currentValue, setCurrentValue] = useState(value);\n\n  useEffect(() => {\n    setCurrentValue(value ?? 0);\n  }, [id]);\n\n  useEffect(() => {\n    if (!simulate) {\n      setCurrentValue(value);\n      return;\n    }\n\n    // Simulate progress with irregular intervals\n    const incrementProgress = () => {\n      setCurrentValue((prev) => {\n        if (prev >= max) return max;\n\n        // Calculate progress percentage\n        const progressPercentage = prev / max;\n\n        // Reduce increment size as we approach max\n        let baseIncrement: number;\n        if (progressPercentage < 0.5) {\n          baseIncrement = Math.random() * 2 + 2;\n        } else if (progressPercentage < 0.8) {\n          baseIncrement = Math.random() * 1 + 1;\n        } else if (progressPercentage < 0.95) {\n          baseIncrement = Math.random() * 0.5 + 0.2;\n        } else {\n          baseIncrement = Math.random() * 0.1 + 0.1;\n        }\n\n        return Math.min(prev + baseIncrement, max);\n      });\n    };\n\n    const scheduleNext = () => {\n      const delay = Math.random() * simulationSpeed + 100;\n      return setTimeout(() => {\n        incrementProgress();\n        if (currentValue < max) {\n          timeoutId = scheduleNext();\n        }\n      }, delay);\n    };\n\n    let timeoutId = scheduleNext();\n\n    return () => {\n      clearTimeout(timeoutId);\n    };\n  }, [simulate, max, currentValue, value, simulationSpeed]);\n\n  useEffect(() => {\n    if (!simulate) {\n      setCurrentValue(value);\n    }\n  }, [value, simulate]);\n\n  const percentage = Math.min((currentValue / max) * 100, 100);\n\n  return (\n    <div\n      className={cn(\n        \"shadow-border rounded-full w-full h-6 overflow-hidden bg-surface-secondary\",\n        className,\n      )}\n    >\n      <div\n        className=\"h-full rounded-full bg-controls-success-500 transition-all duration-300 ease-out\"\n        style={{\n          width: `${percentage}%`,\n        }}\n      />\n    </div>\n  );\n};\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/ProgressBar.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

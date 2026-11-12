@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-bubble",
+  "title": "chat-bubble",
+  "dependencies": [
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/chat-bubble.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode } from \"react\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nconst chatBubbleVariants = cva(\n  [\n    \"min-w-0 max-w-full [overflow-wrap:anywhere]\",\n    \"text-body font-(family-name:--font-family-secondary) text-(--text-primary)\",\n  ],\n  {\n    variants: {\n      messageRole: {\n        user: \"w-fit rounded-(--radius-inner) bg-(--bg-chat-user) px-4 py-3 text-pretty\",\n        assistant: \"w-full\",\n      },\n      surface: {\n        default: \"\",\n        \"shadow-border\": \"\",\n      },\n    },\n    compoundVariants: [\n      {\n        messageRole: \"user\",\n        surface: \"shadow-border\",\n        className: \"shadow-(--shadow-border)\",\n      },\n    ],\n    defaultVariants: { messageRole: \"user\", surface: \"default\" },\n  },\n);\n\nexport interface ChatBubbleProps extends VariantProps<\n  typeof chatBubbleVariants\n> {\n  asChild?: boolean;\n  children?: ReactNode;\n  className?: string;\n  /** Content shown above the text, including attachment-only messages. */\n  attachments?: ReactNode;\n  /** Timestamp or actions. Space stays reserved even while hidden. */\n  metadata?: ReactNode;\n  disableMotion?: boolean;\n}\n\nexport function ChatBubble({\n  children,\n  surface,\n  messageRole = \"user\",\n  className,\n  asChild = false,\n  attachments,\n  metadata,\n}: ChatBubbleProps) {\n  const isUser = messageRole === \"user\";\n  const Comp = asChild ? Slot : \"div\";\n  return (\n    <div\n      className={cn(\n        \"group/message flex w-full min-w-0 flex-col\",\n        isUser\n          ? \"items-end origin-bottom-right\"\n          : \"items-start origin-bottom-left\",\n      )}\n    >\n      <div\n        className={cn(\n          \"flex min-w-0 flex-col gap-2\",\n          isUser ? \"w-fit max-w-[80%] items-end\" : \"w-full items-start\",\n        )}\n      >\n        {attachments && (\n          <div\n            className={cn(\n              \"flex min-w-0 max-w-full flex-wrap gap-2\",\n              isUser && \"justify-end\",\n            )}\n          >\n            {attachments}\n          </div>\n        )}\n        {children && (\n          <Comp\n            className={cn(\n              chatBubbleVariants({ surface, messageRole }),\n              className,\n            )}\n          >\n            {children}\n          </Comp>\n        )}\n        {metadata && (\n          <div\n            className={cn(\n              \"flex min-h-6 items-center gap-2 text-caption text-(--text-secondary) tabular-nums\",\n              \"opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/message:opacity-100 [@media(hover:hover)]:group-focus-within/message:opacity-100\",\n              \"transition-opacity duration-(--duration-fast) motion-reduce:transition-none\",\n              isUser && \"justify-end\",\n            )}\n          >\n            {metadata}\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n\nexport { chatBubbleVariants };\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/chat-bubble.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

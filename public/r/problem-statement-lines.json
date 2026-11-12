@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "problem-statement-lines",
+  "title": "ProblemStatementLines",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/flowchart.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/ProblemStatementLines.tsx",
+      "content": "\"use client\";\n\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"#/components/ds/lib/classnames\";\nimport type { ProblemStatementLine } from \"./flowchart/types\";\n\nexport const problemStatementLinesVariants = cva([\"flex flex-col\"], {\n  variants: {\n    size: {\n      sm: [\"gap-1.5\"],\n      xs: [\"gap-1.5\"],\n    },\n  },\n  defaultVariants: { size: \"sm\" },\n});\n\nconst lineTextVariants = cva([\"m-0\"], {\n  variants: {\n    size: {\n      sm: [\"text-body\", \"\"],\n      xs: [\"text-caption\", \"\"],\n    },\n  },\n  defaultVariants: { size: \"sm\" },\n});\n\nexport interface ProblemStatementLinesProps extends VariantProps<\n  typeof problemStatementLinesVariants\n> {\n  lines: ProblemStatementLine[];\n  className?: string;\n}\n\n/**\n * The mad-lib problem statement: a muted lead-in per line (`As a`, `I must`,\n * `but`) followed by the officer's own words.\n *\n * A line with a `lead` and no `body` renders as muted-only, which is how a\n * trailing qualifier-only line would be expressed without a second type.\n * Lines are supplied already assembled — the caller derives them from the\n * answers, so this component never decides what the statement says.\n *\n * Shared by `ds/patterns`' `ProblemStatementProse` (14px, `size=\"sm\"`)\n * and the flowchart's `ProblemStatementNode` (12px, `size=\"xs\"`) so the\n * two contexts render from one `ds/ui` source instead of `ds/ui` reaching\n * into `ds/patterns` — see this repo's `ds/CLAUDE.md` layering rule.\n */\nexport function ProblemStatementLines({\n  lines,\n  size,\n  className,\n}: ProblemStatementLinesProps) {\n  return (\n    <div className={cn(problemStatementLinesVariants({ size }), className)}>\n      {lines.map((line, index) => (\n        <p\n          key={`${line.lead ?? \"\"}-${index}`}\n          className={lineTextVariants({ size })}\n        >\n          {line.lead && (\n            <span className=\"text-(--text-secondary)\">{line.lead}</span>\n          )}\n          {line.lead && line.body && \" \"}\n          {line.body && (\n            <span className=\"text-(--text-primary)\">{line.body}</span>\n          )}\n        </p>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/ProblemStatementLines.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

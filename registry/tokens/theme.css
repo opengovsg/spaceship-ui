@@ -1,0 +1,256 @@
+/* ============================================================================
+   Spaceship Design System — Design Tokens (single source of truth)
+
+   Values live in ./tokens.css (the design-system tree: primitives, aliases,
+   semantic tokens, radius, shadows, type scale, motion, effects, sizing, dark
+   mode), synced from the Figma design-system file's variables/styles export.
+   This file maps those onto Tailwind utilities via `@theme static`, which:
+   1. Generates the Tailwind utilities the app uses (bg-*, text-*, border-*, …).
+      The role-based utility names (controls-*, content-*, surface-*, callout-*)
+      are UNCHANGED — they now *re-point* at design-system values, so the app's
+      palette shifts to the DS with zero component markup changes.
+   2. Emits each token as a :root CSS custom property *even when unused*, so
+      runtime consumers (src/utils/toast.tsx) and the Storybook Foundations docs
+      read the real, compiled values and the catalogue can never drift.
+
+   HeroUI-specific tokens (its semantic color scale + component radius) are
+   owned by the app's hero.ts — Tailwind cannot drive them. See that file.
+   ============================================================================ */
+@theme static {
+  /* ---- Fonts ---------------------------------------------------------- */
+  --font-sans: var(--font-family-secondary); /* Sora */
+  --font-serif: var(--font-family-primary); /* Compatibility alias: display */
+  --font-mono: var(--font-family-mono); /* Space Mono */
+
+  /* ---- Palette · controls-primary (brand blue → DS Orbit Blue) -------- */
+  --color-controls-primary-50: var(--orbit-blue-50);
+  --color-controls-primary-100: var(--orbit-blue-100);
+  --color-controls-primary-200: var(--orbit-blue-200);
+  --color-controls-primary-300: var(--orbit-blue-300);
+  --color-controls-primary-400: var(--orbit-blue-400);
+  --color-controls-primary-500: var(--orbit-blue-500);
+  --color-controls-primary-600: var(--orbit-blue-600);
+  --color-controls-primary-700: var(--orbit-blue-700);
+  --color-controls-primary-800: var(--orbit-blue-800);
+  --color-controls-primary-900: var(--orbit-blue-900);
+  --color-controls-primary-950: var(
+    --orbit-blue-900
+  ); /* DS ramp stops at 900 */
+
+  /* ---- Palette · controls-secondary (neutral → DS Zinc) --------------- */
+  --color-controls-secondary-50: var(--neutral-50);
+  --color-controls-secondary-100: var(--neutral-100);
+  --color-controls-secondary-200: var(--neutral-200);
+  --color-controls-secondary-300: var(--neutral-300);
+  --color-controls-secondary-400: var(--neutral-400);
+  --color-controls-secondary-500: var(--neutral-500);
+  --color-controls-secondary-600: var(--neutral-600);
+  --color-controls-secondary-700: var(--neutral-700);
+  --color-controls-secondary-800: var(--neutral-800);
+  --color-controls-secondary-900: var(--neutral-900);
+  --color-controls-secondary-950: var(--neutral-950);
+
+  /* ---- Palette · controls-critical (red → DS Solar Coral) ------------- */
+  --color-controls-critical-50: var(--solar-coral-50);
+  --color-controls-critical-100: var(--solar-coral-100);
+  --color-controls-critical-200: var(--solar-coral-200);
+  --color-controls-critical-300: var(--solar-coral-300);
+  --color-controls-critical-400: var(--solar-coral-400);
+  --color-controls-critical-500: var(--solar-coral-500);
+  --color-controls-critical-600: var(--solar-coral-600);
+  --color-controls-critical-700: var(--solar-coral-700);
+  --color-controls-critical-800: var(--solar-coral-800);
+  --color-controls-critical-900: var(--solar-coral-900);
+  --color-controls-critical-950: var(
+    --solar-coral-900
+  ); /* DS ramp stops at 900 */
+
+  /* ---- Palette · controls-success (teal → DS Nova Mint) --------------- */
+  --color-controls-success-50: var(--nova-mint-50);
+  --color-controls-success-100: var(--nova-mint-100);
+  --color-controls-success-200: var(--nova-mint-200);
+  --color-controls-success-300: var(--nova-mint-300);
+  --color-controls-success-400: var(--nova-mint-400);
+  --color-controls-success-500: var(--nova-mint-500);
+  --color-controls-success-600: var(--nova-mint-600);
+  --color-controls-success-700: var(--nova-mint-700);
+  --color-controls-success-800: var(--nova-mint-800);
+  --color-controls-success-900: var(--nova-mint-900);
+  --color-controls-success-950: var(--nova-mint-900); /* DS ramp stops at 900 */
+
+  /* ---- Surfaces (role-based, re-pointed to DS) ------------------------ */
+  --color-surface-primary: var(--bg-surface-primary); /* surface-2 */
+  --color-surface-secondary: var(--bg-surface-secondary);
+  --color-surface-tertiary: var(--bg-surface-tertiary);
+  --color-canvas: var(--bg-surface-subtle); /* surface-1 */
+
+  /* ---- Content / text ------------------------------------------------- */
+  --color-content: var(--text-primary);
+  --color-content-secondary: var(--text-secondary);
+  --color-content-tertiary: var(--text-tertiary);
+  --color-content-placeholder: var(--text-placeholder);
+  --color-content-error: var(--text-status-error);
+  --color-content-caption: var(--text-tertiary); /* no exact DS equivalent */
+  --color-content-inverse: var(
+    --text-inverse
+  ); /* white text on filled controls */
+  --color-text-interactive-primary: var(--text-interactive-primary);
+  --color-text-interactive-secondary: var(--text-interactive-secondary);
+  --color-text-interactive-disabled: var(--text-interactive-disabled);
+  --color-text-interactive-error: var(--text-interactive-error);
+  --color-text-interactive-success: var(--text-interactive-success);
+  --color-text-status-info-secondary: var(--text-status-info-secondary);
+
+  /* ---- Semantic ------------------------------------------------------- */
+  --color-base: var(--bg-surface-base);
+  --color-success: var(--bg-interactive-success-default);
+  --color-danger: var(--bg-interactive-error-default);
+
+  /* ---- Callouts ------------------------------------------------------- */
+  --color-callout-info: var(--bg-status-info);
+  --color-callout-warning: var(--bg-status-warning);
+  --color-callout-success: var(--bg-status-success);
+  --color-callout-critical: var(--bg-status-error);
+
+  /* ---- Disabled states ------------------------------------------------ */
+  --color-primary-disabled: var(--bg-interactive-primary-disabled);
+  --color-stroke-disabled: var(--text-interactive-disabled);
+  --color-secondary-disabled: var(--bg-interactive-secondary-disabled);
+  --color-critical-disabled: var(--bg-interactive-error-disabled);
+
+  /* ---- New DS utilities (families the app previously lacked) ---------- */
+  /* Neutral surfaces */
+  --color-bg-surface-base: var(--bg-surface-base);
+  --color-bg-surface-primary: var(--bg-surface-primary);
+  --color-bg-surface-secondary: var(--bg-surface-secondary);
+  --color-bg-surface-tertiary: var(--bg-surface-tertiary);
+  --color-bg-surface-paper: var(--bg-surface-paper);
+  --color-bg-surface-fade: var(--bg-surface-fade);
+  /* Brand surfaces */
+  --color-bg-surface-brand-primary: var(--bg-surface-brand-primary);
+  --color-bg-surface-brand-secondary: var(--bg-surface-brand-secondary);
+  --color-bg-surface-brand-tertiary: var(--bg-surface-brand-tertiary);
+  --color-bg-surface-brand-subtle: var(--bg-surface-brand-subtle);
+  --color-bg-surface-brand-base: var(--bg-surface-brand-base);
+  /* Subtle surfaces (new 2026-08-11) */
+  --color-bg-surface-subtle: var(--bg-surface-subtle);
+  /* Success surfaces */
+  --color-bg-surface-success-primary: var(--bg-surface-success-primary);
+  --color-bg-surface-success-secondary: var(--bg-surface-success-secondary);
+  --color-bg-surface-success-tertiary: var(--bg-surface-success-tertiary);
+  --color-bg-surface-success-base: var(--bg-surface-success-base);
+  /* Error surfaces */
+  --color-bg-surface-error-primary: var(--bg-surface-error-primary);
+  --color-bg-surface-error-secondary: var(--bg-surface-error-secondary);
+  --color-bg-surface-error-tertiary: var(--bg-surface-error-tertiary);
+  --color-bg-surface-error-base: var(--bg-surface-error-base);
+  /* Warning surfaces */
+  --color-bg-surface-warning-primary: var(--bg-surface-warning-primary);
+  --color-bg-surface-warning-secondary: var(--bg-surface-warning-secondary);
+  --color-bg-surface-warning-tertiary: var(--bg-surface-warning-tertiary);
+  --color-bg-surface-warning-base: var(--bg-surface-warning-base);
+  /* Status backgrounds — "subtle" tier */
+  --color-bg-status-success: var(--bg-status-success);
+  --color-bg-status-warning: var(--bg-status-warning);
+  --color-bg-status-error: var(--bg-status-error);
+  --color-bg-status-info: var(--bg-status-info);
+  --color-bg-status-neutral: var(--bg-status-neutral);
+  /* Status backgrounds — "default" tier (new 2026-08-11) */
+  --color-bg-status-default-success: var(--bg-status-default-success);
+  --color-bg-status-default-warning: var(--bg-status-default-warning);
+  --color-bg-status-default-error: var(--bg-status-default-error);
+  --color-bg-status-default-info: var(--bg-status-default-info);
+  --color-bg-status-default-neutral: var(--bg-status-default-neutral);
+  /* Interactive "subtle" fills (new 2026-08-11) */
+  --color-bg-interactive-primary-subtle-default: var(
+    --bg-interactive-primary-subtle-default
+  );
+  --color-bg-interactive-primary-subtle-hover: var(
+    --bg-interactive-primary-subtle-hover
+  );
+  --color-bg-interactive-primary-subtle-pressed: var(
+    --bg-interactive-primary-subtle-pressed
+  );
+  --color-bg-interactive-primary-subtle-disabled: var(
+    --bg-interactive-primary-subtle-disabled
+  );
+  --color-bg-interactive-success-subtle-default: var(
+    --bg-interactive-success-subtle-default
+  );
+  --color-bg-interactive-success-subtle-hover: var(
+    --bg-interactive-success-subtle-hover
+  );
+  --color-bg-interactive-success-subtle-pressed: var(
+    --bg-interactive-success-subtle-pressed
+  );
+  --color-bg-interactive-success-subtle-disabled: var(
+    --bg-interactive-success-subtle-disabled
+  );
+  --color-bg-interactive-error-subtle-default: var(
+    --bg-interactive-error-subtle-default
+  );
+  --color-bg-interactive-error-subtle-hover: var(
+    --bg-interactive-error-subtle-hover
+  );
+  --color-bg-interactive-error-subtle-pressed: var(
+    --bg-interactive-error-subtle-pressed
+  );
+  --color-bg-interactive-error-subtle-disabled: var(
+    --bg-interactive-error-subtle-disabled
+  );
+  --color-bg-interactive-warning-subtle-default: var(
+    --bg-interactive-warning-subtle-default
+  );
+  --color-bg-interactive-warning-subtle-hover: var(
+    --bg-interactive-warning-subtle-hover
+  );
+  --color-bg-interactive-warning-subtle-pressed: var(
+    --bg-interactive-warning-subtle-pressed
+  );
+  --color-bg-interactive-warning-subtle-disabled: var(
+    --bg-interactive-warning-subtle-disabled
+  );
+  /* Interactive secondary-ghost fills (new 2026-08-11) */
+  --color-bg-interactive-secondary-ghost-default: var(
+    --bg-interactive-secondary-ghost-default
+  );
+  --color-bg-interactive-secondary-ghost-hover: var(
+    --bg-interactive-secondary-ghost-hover
+  );
+  --color-bg-interactive-secondary-ghost-pressed: var(
+    --bg-interactive-secondary-ghost-pressed
+  );
+  --color-bg-interactive-secondary-ghost-disabled: var(
+    --bg-interactive-secondary-ghost-disabled
+  );
+
+  /* ---- Radius (DS scale, synced from Figma) --------------------------- */
+  --radius-none: var(--radius-none);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+  --radius-4xl: var(--radius-4xl);
+  --radius-full: var(--radius-full);
+
+  /* ---- Shadows (DS shadow-border + keycap) ---------------------------- */
+  --shadow-border: var(--shadow-border);
+  --shadow-border-hover: var(--shadow-border-hover);
+  --shadow-keycap: var(--shadow-keycap);
+  --shadow-keycap-hover: var(--shadow-keycap-hover);
+  --shadow-keycap-pressed: var(--shadow-keycap-pressed);
+
+  /* ---- Motion --------------------------------------------------------- */
+  --animate-rainbow-border: rainbow-border 3s linear infinite;
+}
+
+@keyframes rainbow-border {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}

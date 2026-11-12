@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "app-modal",
+  "title": "AppModal",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/modal.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/AppModal.tsx",
+      "content": "import type { ReactNode } from \"react\";\nimport { Modal, ModalHeader, ModalTitle, ModalFooter } from \"./modal\";\n\nexport interface AppModalProps {\n  isOpen: boolean;\n  onClose: () => void;\n  title: string;\n  children: ReactNode;\n  rightContent?: ReactNode;\n  footer?: ReactNode;\n  size?: \"md\" | \"lg\" | \"xl\";\n  closeOnBackdropClick?: boolean;\n}\n\n/** Application dialog layout, composed from the shared accessible modal. */\nexport function AppModal({\n  isOpen,\n  onClose,\n  title,\n  children,\n  rightContent,\n  footer,\n  size = \"md\",\n  closeOnBackdropClick = true,\n}: AppModalProps) {\n  return (\n    <Modal\n      open={isOpen}\n      onClose={onClose}\n      size={size}\n      closeOnBackdropClick={closeOnBackdropClick}\n    >\n      <ModalHeader className=\"flex-row justify-between items-start\">\n        <ModalTitle>{title}</ModalTitle>\n        {rightContent}\n      </ModalHeader>\n      <div className=\"min-h-0 overflow-y-auto text-(--text-primary)\">\n        {children}\n      </div>\n      {footer && <ModalFooter>{footer}</ModalFooter>}\n    </Modal>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/AppModal.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

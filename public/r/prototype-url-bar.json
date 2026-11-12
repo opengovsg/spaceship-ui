@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "prototype-url-bar",
+  "title": "PrototypeUrlBar",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/PrototypeUrlBar.tsx",
+      "content": "\"use client\";\n\nimport { Copy, Globe, CloudUpload } from \"lucide-react\";\nimport { Button } from \"../ui\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nexport interface PrototypeUrlBarProps {\n  /** The published prototype's URL, shown read-only. */\n  url: string;\n  onCopy?: () => void;\n  onPublish?: () => void;\n  /** Label for the publish button. */\n  publishLabel?: string;\n  /** Accessible label for the icon-only copy button. */\n  copyLabel?: string;\n  className?: string;\n}\n\n/**\n * The read-only URL row above a published prototype — globe icon, the URL\n * itself, a copy button, and a publish action. Distinct from `ShareableLink`,\n * which is an editable domain input for *creating* a link; this only\n * *displays* one that already exists.\n */\nexport function PrototypeUrlBar({\n  url,\n  onCopy,\n  onPublish,\n  publishLabel = \"Publish\",\n  copyLabel = \"Copy prototype URL\",\n  className,\n}: PrototypeUrlBarProps) {\n  return (\n    <div\n      className={cn(\n        \"flex items-center gap-3 rounded-lg border border-(--border-subtle) bg-(--bg-artifact-address) p-2\",\n        className,\n      )}\n    >\n      <Globe aria-hidden className=\"size-4 shrink-0 text-(--text-secondary)\" />\n      <label className=\"sr-only\" htmlFor=\"prototype-url\">\n        Prototype URL\n      </label>\n      <input\n        id=\"prototype-url\"\n        readOnly\n        value={url}\n        className=\"min-w-0 flex-1 bg-transparent font-sans text-body text-(--text-primary) outline-none\"\n      />\n      <Button\n        variant=\"secondary\"\n        size=\"icon\"\n        leadingIcon={<Copy />}\n        aria-label={copyLabel}\n        onClick={onCopy}\n      />\n      <Button\n        variant=\"success\"\n        trailingIcon={<CloudUpload />}\n        onClick={onPublish}\n      >\n        {publishLabel}\n      </Button>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/PrototypeUrlBar.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

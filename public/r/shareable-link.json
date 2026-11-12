@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shareable-link",
+  "title": "ShareableLink",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react",
+    "react-use-measure"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/ShareableLink.tsx",
+      "content": "\"use client\";\n\nimport { useRef } from \"react\";\nimport { Globe, Link } from \"lucide-react\";\nimport { motion } from \"framer-motion\";\nimport useMeasure from \"react-use-measure\";\nimport { Button } from \"../ui\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\ninterface ShareableLinkProps {\n  value: string;\n  onChange: (value: string) => void;\n  suffix?: string;\n  placeholder?: string;\n  onShare?: () => void;\n  shareLabel?: string;\n  className?: string;\n}\n\nconst FONT_CLASSES = \"font-sans text-body\";\n\nconst SPRING = { type: \"spring\", stiffness: 200, damping: 30 } as const;\n\nexport function ShareableLink({\n  value,\n  onChange,\n  suffix = \".on.spaceship.gov.sg\",\n  placeholder = \"Enter your domain name\",\n  onShare,\n  shareLabel = \"Create shareable link\",\n  className,\n}: ShareableLinkProps) {\n  const inputRef = useRef<HTMLInputElement>(null);\n  const [sizerRef, { width: sizerWidth }] = useMeasure();\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center gap-2 rounded-lg shadow-(--shadow-border) bg-(--bg-artifact-address) p-1\",\n        className,\n      )}\n    >\n      {/* Inner padding wrapper: Globe + text group */}\n      <div className=\"flex items-center gap-2 px-2\">\n        {/* Globe icon */}\n        <Globe className=\"size-5 text-(--text-secondary) shrink-0\" />\n\n        {/* Text group */}\n        <div className=\"flex items-baseline relative\">\n          {/* Invisible sizer — out of flow, measures text width only */}\n          <span\n            ref={sizerRef}\n            aria-hidden\n            className={cn(\n              \"absolute invisible whitespace-pre pointer-events-none\",\n              FONT_CLASSES,\n            )}\n          >\n            {value || placeholder}\n          </span>\n\n          {/* motion.div in flow — layout FLIP drives width so suffix slides smoothly (B-tier) */}\n          <motion.div\n            layout\n            transition={{ layout: SPRING }}\n            className=\"cursor-text overflow-hidden\"\n            style={{ width: sizerWidth || undefined }}\n            onClick={() => inputRef.current?.focus()}\n          >\n            <input\n              ref={inputRef}\n              value={value}\n              onChange={(e) => onChange(e.target.value)}\n              aria-label=\"Domain name\"\n              placeholder={placeholder}\n              className={cn(\n                \"w-full bg-transparent outline-none px-0\",\n                \"text-(--text-primary) placeholder:text-(--text-placeholder)\",\n                FONT_CLASSES,\n              )}\n            />\n          </motion.div>\n\n          {/* Suffix — follows motion.div in flex flow */}\n          <span\n            className={cn(\n              \"text-(--text-tertiary) whitespace-nowrap shrink-0\",\n              FONT_CLASSES,\n            )}\n          >\n            {suffix}\n          </span>\n        </div>\n      </div>\n\n      {/* Share button */}\n      <Button variant=\"success\" trailingIcon={<Link />} onClick={onShare}>\n        {shareLabel}\n      </Button>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/ShareableLink.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

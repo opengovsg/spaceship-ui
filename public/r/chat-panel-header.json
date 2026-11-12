@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-panel-header",
+  "title": "ChatPanelHeader",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/ChatPanelHeader.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport { ArrowLeft } from \"lucide-react\";\nimport { Button } from \"#/components/ds/ui\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\nexport interface ChatPanelHeaderProps {\n  /** Rendered in Sora + sentence case and centred, e.g. `PROBLEM CRAFTER`. */\n  title: string;\n  /** Renders a left-arrow button before the title that returns to the canvas. */\n  onCollapse?: () => void;\n  /** Right-aligned slot for additional actions. */\n  actions?: ReactNode;\n  className?: string;\n}\n\n/**\n * The static counterpart to `EditableTitle`. The proposer flow names its chat\n * surfaces after the agent doing the work (`PROBLEM CRAFTER`, `PROTOTYPE\n * REFINER`), which the user does not rename, so there is nothing to edit.\n */\nexport function ChatPanelHeader({\n  title,\n  onCollapse,\n  actions,\n  className,\n}: ChatPanelHeaderProps) {\n  return (\n    <div\n      className={cn(\"flex items-center justify-between gap-2 pb-2\", className)}\n    >\n      {/*\n        Reference pattern for small shadow-surface icon buttons in this flow:\n        pass the glyph via `icon=`, never as `children` — only `icon` /\n        `leadingIcon` / `trailingIcon` route through Button's `IconSlot`,\n        which is what applies the size-appropriate `[&>svg]` sizing (14px at\n        icon-sm). Bare children skip that and render lucide's 24px default\n        inside the 32px button. `EditableTitle` and `ProposerShell`'s own\n        toggle button already follow this — match them here.\n      */}\n      <div className=\"flex w-8 shrink-0 justify-start\">\n        {onCollapse && (\n          <Button\n            variant=\"secondary\"\n            surface=\"ghost\"\n            size=\"icon\"\n            icon={<ArrowLeft />}\n            aria-label=\"Return to project\"\n            tooltip=\"Return to project\"\n            onClick={onCollapse}\n          />\n        )}\n      </div>\n\n      <h2 className=\"min-w-0 truncate text-center font-sans normal-case text-body [font-weight:var(--font-weight-semibold)] text-(--text-secondary)\">\n        {title}\n      </h2>\n\n      <div className=\"flex min-w-8 shrink-0 items-center justify-end gap-1\">\n        {actions}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/ChatPanelHeader.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

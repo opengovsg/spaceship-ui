@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "problem-statement-prose",
+  "title": "ProblemStatementProse",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/ProblemStatementProse.tsx",
+      "content": "\"use client\";\n\nimport { ProblemStatementLines } from \"#/components/ds/ui\";\nimport type { ProblemStatementLine } from \"#/components/ds/ui\";\n\nexport interface ProblemStatementProseProps {\n  lines: ProblemStatementLine[];\n  className?: string;\n}\n\n/**\n * The mad-lib problem statement, full-size: a muted lead-in per line\n * (`As a`, `I must`, `but`) followed by the officer's own words.\n *\n * A line with a `lead` and no `body` renders as muted-only, which is how a\n * trailing qualifier-only line would be expressed without a second type.\n * Lines are supplied already assembled — the caller derives them from the\n * answers, so this component never decides what the statement says.\n *\n * Thin wrapper over `ds/ui`'s `ProblemStatementLines` at `size=\"sm\"` — the\n * compact flowchart card (`ProblemStatementNode`) renders the same shape at\n * `size=\"xs\"` directly from `ds/ui`, since patterns compose from `ds/ui`,\n * never the reverse.\n */\nexport function ProblemStatementProse({\n  lines,\n  className,\n}: ProblemStatementProseProps) {\n  return (\n    <ProblemStatementLines lines={lines} size=\"sm\" className={className} />\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/ProblemStatementProse.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar",
+  "title": "Sidebar",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/icons.json",
+    "https://spaceship-ui.vercel.app/r/motion.json",
+    "https://spaceship-ui.vercel.app/r/ui-index.json"
+  ],
+  "files": [
+    {
+      "path": "registry/patterns/Sidebar/Sidebar.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode } from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"#/components/ds/lib/classnames\";\nimport { springs } from \"#/components/ds/lib/motion\";\n\nexport const SIDEBAR_WIDTH = 240;\n\ninterface SidebarProps {\n  isOpen: boolean;\n  disableMotion?: boolean;\n  className?: string;\n  children?: ReactNode;\n}\n\n/**\n * Collapsible left navigation rail — width slides between 0 and a fixed\n * content width. Pass the same `isOpen` flag driving the adjacent PageFrame\n * so the two animate in lockstep.\n */\nexport function Sidebar({\n  isOpen,\n  disableMotion = false,\n  className,\n  children,\n}: SidebarProps) {\n  return (\n    <motion.div\n      className={cn(\n        \"h-full shrink-0 overflow-clip bg-(--bg-sidebar)\",\n        className,\n      )}\n      initial={false}\n      animate={{ width: isOpen ? SIDEBAR_WIDTH : 0 }}\n      transition={disableMotion ? { duration: 0 } : springs.interactive}\n    >\n      <div\n        inert={!isOpen}\n        className=\"flex h-full flex-col p-4 pr-1\"\n        style={{ width: SIDEBAR_WIDTH }}\n      >\n        {children}\n      </div>\n    </motion.div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/Sidebar/Sidebar.tsx"
+    },
+    {
+      "path": "registry/patterns/Sidebar/SidebarFooter.tsx",
+      "content": "import HelpCircle from \"#/components/ds/icons/help-circle.svg?react\";\nimport MailSend from \"#/components/ds/icons/mail-send.svg?react\";\nimport LogOut from \"#/components/ds/icons/log-out.svg?react\";\nimport { Button } from \"#/components/ds/ui\";\n\nconst HELP_GUIDE_URL = \"https://spaceship.guides.gov.sg/\";\nconst CONTACT_US_URL = \"https://go.gov.sg/spaceship-support\";\n\ninterface SidebarFooterProps {\n  email: string;\n  /** Called when the user clicks Logout. The app wires its own logout here. */\n  onLogout: () => void;\n}\n\n/**\n * Bottom-of-sidebar block for the /v2 shell: help/support links, the\n * signed-in user's email, and logout. `email` comes from the v1 session\n * slice — pass it down from a component that reads the v1 store.\n *\n * Logout is passed in as `onLogout` so the DS stays free of app hooks.\n * The help and contact URLs are product links, kept here on purpose.\n * Kept next to `Sidebar` because the two are always used together.\n */\nexport function SidebarFooter({ email, onLogout }: SidebarFooterProps) {\n  return (\n    <div className=\"flex flex-col gap-3\">\n      <div className=\"flex flex-col gap-4\">\n        <hr className=\"border-(--border-subtle) mb-2\" />\n\n        <Button asChild variant=\"tertiary\" surface=\"shadow\" className=\"w-full\">\n          <a href={HELP_GUIDE_URL} target=\"_blank\" rel=\"noopener noreferrer\">\n            Help Guide\n            <HelpCircle />\n          </a>\n        </Button>\n        <Button asChild variant=\"tertiary\" surface=\"shadow\" className=\"w-full\">\n          <a href={CONTACT_US_URL} target=\"_blank\" rel=\"noopener noreferrer\">\n            Contact Us\n            <MailSend />\n          </a>\n        </Button>\n      </div>\n\n      <span className=\"truncate text-(--text-tertiary) text-caption normal-case font-bold text-center py-1\">\n        {email}\n      </span>\n\n      <Button variant=\"destructive\" surface=\"ghost\" onClick={onLogout}>\n        Logout\n        <LogOut />\n      </Button>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/Sidebar/SidebarFooter.tsx"
+    },
+    {
+      "path": "registry/patterns/Sidebar/index.ts",
+      "content": "export { Sidebar } from \"./Sidebar\";\nexport { SidebarFooter } from \"./SidebarFooter\";\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/Sidebar/index.ts"
+    }
+  ],
+  "type": "registry:block"
+}

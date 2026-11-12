@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "artifact-types",
+  "title": "artifact-types",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/patterns/artifact-types.ts",
+      "content": "// ─── Artifact Types ────────────────────────────────────────────────────────\n// DS-level types and constants for artifact navigation patterns.\n// These live in components/patterns/ so DS components can import them\n// without depending on app/ (which is viewer infrastructure).\n\nexport type ArtifactType =\n  | \"prd\"\n  | \"research\"\n  | \"implementation\"\n  | \"code\"\n  | \"preview\"\n  | \"brief\"\n  | \"proposal\"\n  | \"security\"\n  | \"prototype\";\n\nexport type ArtifactStatus = \"draft\" | \"in-progress\" | \"complete\";\n\nexport interface Artifact {\n  id: string;\n  type: ArtifactType;\n  title: string;\n  status: ArtifactStatus;\n  content: string;\n  updatedAt: string;\n}\n\nexport interface ArtifactNavigationProps {\n  artifacts: Artifact[];\n  activeId: string;\n  onSelect: (id: string) => void;\n  changedIds?: Set<string>;\n  onRefresh?: () => void;\n  onOpenInNewTab?: () => void;\n}\n\nexport const ARTIFACT_TYPE_LABEL: Record<ArtifactType, string> = {\n  prd: \"PRD\",\n  research: \"User Research\",\n  implementation: \"Impl. Plan\",\n  code: \"Code\",\n  preview: \"Preview\",\n  brief: \"Project Brief\",\n  proposal: \"Proposal\",\n  security: \"Security Review\",\n  prototype: \"Prototype\",\n};\n\nexport const ARTIFACT_STATUS_VARIANT: Record<\n  ArtifactStatus,\n  \"neutral\" | \"warning\" | \"success\"\n> = {\n  draft: \"neutral\",\n  \"in-progress\": \"warning\",\n  complete: \"success\",\n};\n\nexport const ARTIFACT_STATUS_LABEL: Record<ArtifactStatus, string> = {\n  draft: \"Draft\",\n  \"in-progress\": \"In Progress\",\n  complete: \"Complete\",\n};\n",
+      "type": "registry:file",
+      "target": "src/components/ds/patterns/artifact-types.ts"
+    }
+  ],
+  "type": "registry:lib"
+}

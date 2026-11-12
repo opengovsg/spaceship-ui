@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "classnames",
+  "title": "classnames",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/lib/classnames.ts",
+      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { extendTailwindMerge } from \"tailwind-merge\";\n\n// Role names are font sizes, not text colours. Register them so a caller can\n// override a component's role without losing its colour (or retaining two sizes).\nconst twMerge = extendTailwindMerge({\n  extend: {\n    classGroups: {\n      \"font-size\": [\n        { text: [\"display\", \"title\", \"subtitle\", \"body\", \"caption\"] },\n      ],\n    },\n  },\n});\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/lib/classnames.ts"
+    }
+  ],
+  "type": "registry:lib"
+}

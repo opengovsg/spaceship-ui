@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-sphere",
+  "title": "DotSphere",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/DotSphere.tsx",
+      "content": "import { cn } from \"#/components/ds/lib/classnames\";\n\n// ─── Constants ────────────────────────────────────────────────────────────────\n\nconst DEFAULT_SIZE = 156;\nconst DEFAULT_DOT_COUNT = 180;\n/** View box is a fixed 100×100 square; `size` only scales the rendered SVG. */\nconst VIEW_BOX_SIZE = 100;\nconst SPHERE_RADIUS = 46;\nconst MIN_DOT_RADIUS = 0.55;\nconst MAX_DOT_RADIUS = 1.45;\nconst MIN_OPACITY = 0.15;\nconst MAX_OPACITY = 1;\n\n// ─── Types ────────────────────────────────────────────────────────────────────\n\ninterface SphereDot {\n  cx: number;\n  cy: number;\n  r: number;\n  opacity: number;\n}\n\n// ─── Helpers ──────────────────────────────────────────────────────────────────\n\n/**\n * Deterministic points on a sphere via a Fibonacci lattice, projected\n * orthographically (front hemisphere only — `z >= 0`) onto a 2D circle.\n * Deterministic (no `Math.random()`) so Storybook and SSR renders are stable.\n */\nfunction computeSphereDots(count: number): SphereDot[] {\n  const goldenAngle = Math.PI * (3 - Math.sqrt(5));\n  const dots: SphereDot[] = [];\n\n  for (let i = 0; i < count; i++) {\n    // Evenly spaced z in [-1, 1]; keep only the front-facing hemisphere.\n    const z = 1 - (i / (count - 1)) * 2;\n    if (z < 0) continue;\n\n    const radiusAtZ = Math.sqrt(1 - z * z);\n    const theta = goldenAngle * i;\n    const x = Math.cos(theta) * radiusAtZ;\n    const y = Math.sin(theta) * radiusAtZ;\n\n    // z drives both apparent size and opacity, so dots near the sphere's\n    // silhouette edge recede and the shape reads as a sphere, not a disc.\n    const depth = (z + 1) / 2; // 0 (edge) .. 1 (center-front)\n    dots.push({\n      cx: VIEW_BOX_SIZE / 2 + x * SPHERE_RADIUS,\n      cy: VIEW_BOX_SIZE / 2 + y * SPHERE_RADIUS,\n      r: MIN_DOT_RADIUS + depth * (MAX_DOT_RADIUS - MIN_DOT_RADIUS),\n      opacity: MIN_OPACITY + depth * (MAX_OPACITY - MIN_OPACITY),\n    });\n  }\n\n  return dots;\n}\n\n// ─── Props ────────────────────────────────────────────────────────────────────\n\nexport interface DotSphereProps {\n  /** Rendered width and height in px. Default 156 (the landing hero size). */\n  size?: number;\n  /** Number of lattice points generated before back-hemisphere culling. Default 180. */\n  dotCount?: number;\n  className?: string;\n}\n\n// ─── DotSphere ────────────────────────────────────────────────────────────────\n\n/** Decorative dotted-sphere illustration used above the proposer-flow landing heading. */\nexport function DotSphere({\n  size = DEFAULT_SIZE,\n  dotCount = DEFAULT_DOT_COUNT,\n  className,\n}: DotSphereProps) {\n  const dots = computeSphereDots(dotCount);\n\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox={`0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}\n      className={cn(\"fill-(--text-primary)\", className)}\n      role=\"presentation\"\n      aria-hidden=\"true\"\n    >\n      {dots.map((dot, i) => (\n        <circle\n          key={i}\n          cx={dot.cx}\n          cy={dot.cy}\n          r={dot.r}\n          opacity={dot.opacity}\n        />\n      ))}\n    </svg>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/DotSphere.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

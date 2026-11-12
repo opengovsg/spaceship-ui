@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "thinking-orb",
+  "title": "thinking-orb",
+  "dependencies": [
+    "@radix-ui/react-visually-hidden",
+    "class-variance-authority",
+    "thinking-orbs"
+  ],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json",
+    "https://spaceship-ui.vercel.app/r/use-reduced-motion.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/thinking-orb.tsx",
+      "content": "\"use client\";\n\nimport type { HTMLAttributes } from \"react\";\nimport { ThinkingOrb as LibraryOrb, type OrbState } from \"thinking-orbs\";\nimport { VisuallyHidden } from \"@radix-ui/react-visually-hidden\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"#/components/ds/lib/classnames\";\nimport { useSystemReducedMotion } from \"./use-reduced-motion\";\n\nexport type ThinkingOrbState = OrbState;\n\nexport const thinkingOrbVariants = cva(\n  [\"inline-flex shrink-0 items-center justify-center\"],\n  {\n    variants: {\n      size: {\n        sm: \"size-5\",\n        md: \"size-8\",\n        lg: \"size-12\",\n        xl: \"size-16\",\n        \"2xl\": \"size-40\",\n      },\n      surface: {\n        default: \"\",\n        \"shadow-border\": \"rounded-full shadow-(--shadow-border)\",\n      },\n    },\n    defaultVariants: { size: \"lg\", surface: \"default\" },\n  },\n);\n\nexport interface ThinkingOrbProps\n  extends\n    HTMLAttributes<HTMLSpanElement>,\n    VariantProps<typeof thinkingOrbVariants> {\n  state?: ThinkingOrbState;\n  /** Accessible description. Use an empty label beside an existing status label. */\n  label?: string;\n  disableMotion?: boolean;\n  color?: string;\n  canvasColor?: string;\n}\n\n/** Libraries.dev orb, with Spaceship sizing and accessibility conventions. */\nexport function ThinkingOrb({\n  state = \"searching\",\n  label = \"Loading\",\n  disableMotion = false,\n  size = \"lg\",\n  surface,\n  className,\n  color,\n  canvasColor,\n  ...props\n}: ThinkingOrbProps) {\n  const reducedMotion = useSystemReducedMotion();\n  // Inline and compact presets have their own particle density; larger sizes\n  // use the library's avatar preset, scaled into the existing DS size slots.\n  const preset = size === \"sm\" ? 20 : size === \"md\" ? 32 : 64;\n\n  return (\n    <span\n      {...props}\n      className={cn(thinkingOrbVariants({ size, surface }), className)}\n    >\n      {label && <VisuallyHidden>{label}</VisuallyHidden>}\n      <LibraryOrb\n        state={state}\n        color={color}\n        size={preset}\n        theme=\"auto\"\n        paused={disableMotion || reducedMotion}\n        aria-hidden=\"true\"\n        style={{ width: \"100%\", height: \"100%\", backgroundColor: canvasColor }}\n      />\n    </span>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/thinking-orb.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

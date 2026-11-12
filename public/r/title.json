@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "title",
+  "title": "Title",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://spaceship-ui.vercel.app/r/classnames.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/Title.tsx",
+      "content": "import { ElementType, PropsWithChildren } from \"react\";\nimport { cn } from \"#/components/ds/lib/classnames\";\n\ninterface TitleProps {\n  className?: string;\n  family?: \"sans\" | \"mono\";\n  /**\n   * The rendered element/tag. Defaults to `\"div\"` — unchanged from this\n   * component's original behavior — rather than defaulting to `\"h1\"`,\n   * because `Title` is used multiple times on the same page in some\n   * consumers (e.g. `LandingHeroSection` and `LandingSectionFAQ` both\n   * render a `Title` on `src/routes/landing.tsx`'s single landing page);\n   * defaulting to `h1` would silently produce two `<h1>`s on that page.\n   * Callers that render `Title` as a genuine page title (one per page,\n   * e.g. the Problem Statement playground's screens) should opt in with\n   * `as=\"h1\"` explicitly.\n   */\n  as?: ElementType;\n}\n\nexport const Title = ({\n  children,\n  className,\n  family = \"sans\",\n  as: Component = \"div\",\n}: PropsWithChildren<TitleProps>) => {\n  return (\n    <Component\n      className={cn(\n        \"text-display text-center\",\n        family === \"mono\" ? \"font-mono\" : \"font-sans\",\n        className,\n      )}\n    >\n      {children}\n    </Component>\n  );\n};\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/Title.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

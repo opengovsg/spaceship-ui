@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "relative-date",
+  "title": "relative-date",
+  "dependencies": [
+    "date-fns"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ui/relative-date.tsx",
+      "content": "import { format as formatDateFns, isAfter } from \"date-fns\";\nimport {\n  differenceInMinutes,\n  differenceInHours,\n  differenceInDays,\n  isSameDay,\n  isSameWeek,\n} from \"date-fns\";\n\ntype RelativeDateProps = {\n  /** The date to display, as a Date object or an ISO string. */\n  date: Date | string;\n  /** Optional format string for displaying the date (e.g., \"dd MMM yyyy, h:mma\"). */\n  format?: string;\n  /** Whether a relative date should always be shown even if the date is older than the current week. */\n  forceRelativeDate?: boolean;\n};\n\nexport function getRelativeDateString(\n  date: Date,\n  now: Date,\n  forceRelativeDate?: boolean,\n) {\n  if (isAfter(date, now)) {\n    // Only show relative date for past dates\n    return null;\n  }\n\n  const diffMinutes = differenceInMinutes(now, date);\n  const diffHours = differenceInHours(now, date);\n  const diffDays = differenceInDays(now, date);\n\n  if (diffMinutes < 60) {\n    return `${diffMinutes <= 0 ? 1 : diffMinutes}m ago`;\n  }\n  if (isSameDay(now, date) || diffDays < 1) {\n    return `${diffHours}h ago`;\n  }\n  if (isSameWeek(now, date) || forceRelativeDate) {\n    return `${diffDays}d ago`;\n  }\n  return null;\n}\n\nexport const RelativeDate: React.FC<RelativeDateProps> = ({\n  date,\n  format,\n  forceRelativeDate,\n}) => {\n  const parsedDate = typeof date === \"string\" ? new Date(date) : date;\n  const now = new Date();\n\n  let display = getRelativeDateString(parsedDate, now, forceRelativeDate);\n  if (!display) {\n    display = formatDateFns(parsedDate, format ?? \"dd MMM yyyy, h:mma\");\n  }\n\n  return <span>{display}</span>;\n};\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/relative-date.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

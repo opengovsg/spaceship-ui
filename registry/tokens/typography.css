@@ -1,0 +1,64 @@
+/* App-owned typography roles. Keep the synced primitive scale in tokens.css intact.
+ * Display tracking is intentionally tighter; smaller text keeps normal spacing.
+ */
+:root {
+  --type-display-size: 1.75rem; /* 28px */
+  --type-display-leading: 2.125rem; /* 34px */
+  --type-display-weight: var(--font-weight-bold);
+  --type-display-tracking: -0.025em;
+  --type-title-size: 1rem; /* 16px */
+  --type-title-leading: 1.375rem; /* 22px */
+  --type-title-weight: 550;
+  /* Subtitles must never fall below the UI/body size. */
+  --type-subtitle-size: max(0.875rem, var(--type-body-size)); /* 14px */
+  --type-subtitle-leading: max(1.25rem, var(--type-body-leading)); /* 20px */
+  --type-subtitle-weight: 550;
+  --type-body-size: 0.8125rem; /* 13px */
+  --type-body-leading: 1.25rem; /* 20px */
+  --type-body-weight: var(--font-weight-regular);
+  --type-caption-size: 0.75rem; /* 12px */
+  --type-caption-leading: 1rem; /* 16px */
+  --type-caption-weight: var(--font-weight-regular);
+}
+
+/* Complete text styles, shared by app components and markdown. Weight utilities
+ * can still emphasize body/caption text without adding another type role.
+ */
+@theme inline {
+  --font-display: var(--font-family-primary);
+  --text-display: var(--type-display-size);
+  --text-display--line-height: var(--type-display-leading);
+  --text-display--font-weight: var(--type-display-weight);
+  --text-display--letter-spacing: var(--type-display-tracking);
+  --text-title: var(--type-title-size);
+  --text-title--line-height: var(--type-title-leading);
+  --text-title--font-weight: var(--type-title-weight);
+  --text-title--letter-spacing: 0em;
+  --text-subtitle: var(--type-subtitle-size);
+  --text-subtitle--line-height: var(--type-subtitle-leading);
+  --text-subtitle--font-weight: var(--type-subtitle-weight);
+  --text-subtitle--letter-spacing: 0em;
+  --text-body: var(--type-body-size);
+  --text-body--line-height: var(--type-body-leading);
+  --text-body--font-weight: var(--type-body-weight);
+  --text-body--letter-spacing: 0em;
+  --text-caption: var(--type-caption-size);
+  --text-caption--line-height: var(--type-caption-leading);
+  --text-caption--font-weight: var(--type-caption-weight);
+  --text-caption--letter-spacing: 0em;
+}
+
+@layer base {
+  body {
+    @apply text-body;
+  }
+
+  strong,
+  b {
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+@utility text-display {
+  font-family: var(--font-family-primary);
+}

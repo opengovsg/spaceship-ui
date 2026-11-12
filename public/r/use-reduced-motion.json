@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-reduced-motion",
+  "title": "use-reduced-motion",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ui/use-reduced-motion.ts",
+      "content": "import { useReducedMotion } from \"framer-motion\";\n\n/** Returns true when the user has enabled \"Reduce motion\" in system accessibility settings. */\nexport function useSystemReducedMotion(): boolean {\n  return useReducedMotion() ?? false;\n}\n",
+      "type": "registry:file",
+      "target": "src/components/ds/ui/use-reduced-motion.ts"
+    }
+  ],
+  "type": "registry:hook"
+}
