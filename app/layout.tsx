@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { getRegistry } from "@/lib/registry";
+import Script from "next/script";
+import { getNavOrder } from "@/lib/catalog";
+import { SiteShell, type NavEntry } from "./_site/site-shell";
 import "./globals.css";
 
-const registry = getRegistry();
-
 export const metadata: Metadata = {
-  title: registry.name,
-  description: `Components for ${registry.name}. See them here, install them with one command.`,
+  title: { default: "Spaceship UI", template: "%s · Spaceship UI" },
+  description: "The components behind Spaceship. See each one live, and install it into Spaceship Frontend with one command.",
 };
 
+// Set the theme before first paint so dark mode never flashes light.
+const themeScript = `try{var t=localStorage.getItem("spaceship-ui-theme");document.documentElement.dataset.theme=t==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const nav: NavEntry[] = getNavOrder().map(({ name, label, kind }) => ({ name, label, kind }));
   return (
-    <html lang="en">
-      <body className="docs-body">
-        <header className="docs-header">
-          <Link href="/" className="docs-brand">
-            {registry.name}
-          </Link>
-        </header>
-        <main className="docs-main">{children}</main>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
+      <body>
+        <Script id="theme" strategy="beforeInteractive">
+          {themeScript}
+        </Script>
+        <SiteShell nav={nav}>{children}</SiteShell>
       </body>
     </html>
   );

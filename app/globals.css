@@ -25,16 +25,8 @@
   --icon-stroke-bold: 3;
 }
 
-/* Docs chrome only. Keep it plain so the components are what you look at. */
-.docs-body { margin: 0; font-family: system-ui, sans-serif; color: #18181b; background: #fff; }
-.docs-header { padding: 16px 24px; border-bottom: 1px solid #e4e4e7; }
-.docs-brand { font-weight: 600; text-decoration: none; color: inherit; }
-.docs-main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
-.docs-main h1 { font-size: 28px; margin: 0 0 8px; }
-.docs-main h2 { font-size: 16px; margin: 32px 0 12px; color: #52525b; }
-.docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
-.docs-card { display: block; padding: 12px 14px; border: 1px solid #e4e4e7; border-radius: 8px; text-decoration: none; color: inherit; }
-.docs-card:hover { border-color: #a1a1aa; }
-.docs-muted { color: #71717a; font-size: 13px; }
-.docs-preview { min-height: 160px; padding: 32px; border: 1px solid #e4e4e7; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-.docs-code { overflow-x: auto; padding: 16px; border-radius: 8px; background: #f4f4f5; font-size: 13px; line-height: 1.5; }
+/* The site chrome is styled with Spaceship tokens in the components themselves.
+   Only page-wide basics live here. */
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg-surface-base); -webkit-font-smoothing: antialiased; }
+:focus-visible { outline: 2px solid var(--border-input-focus); outline-offset: 2px; }
