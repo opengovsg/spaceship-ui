@@ -10,6 +10,8 @@
 @plugin "@tailwindcss/typography";
 /* Let Tailwind see class names used inside the registry files. */
 @source "../registry";
+/* Notes like registry/AGENTS.md hold placeholder class names that break the CSS build. */
+@source not "../registry/**/*.md";
 
 /* Fonts and icon strokes. These live in the app's src/index.css, not in the
    registry, so they are mirrored here for the docs site. */
